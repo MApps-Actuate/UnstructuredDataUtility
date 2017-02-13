@@ -1,0 +1,123 @@
+#content {
+    width: 600px;
+    margin: 50px auto 0 auto;
+    position: relative;
+}
+
+.formItem {
+    margin-top: 15px;
+}
+
+.formItem label {
+    display: inline-block;
+    width: 37%;
+    text-align: right;
+    padding-right: 2%;
+    font-size: 1.13em;
+}
+
+.formItem input, .formItem select {
+    font-size: 1.13em;
+    width: 60%;
+}
+
+.formItem input[type="submit"] {
+    font-size: 1.25em;
+    margin: 15px 0 0 35%;
+    width: 30%;
+}
+
+#update {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 5px 1% 7px 1%;
+    border-radius: 8px;
+    border: 4px solid black;
+    background-color: white;
+    display: none;
+    z-index: 200;
+}
+
+#closeUpdate {
+    cursor: pointer;
+}
+
+#settings {
+    border: 2px solid #666;
+    border-radius: 4px;
+}
+
+.settingTitle {
+    width: 45%;
+    display: inline-block;
+    margin: 0.5% 0 0.5% 1%;
+}
+
+#settingsItems {
+    border-top: 1px solid #999;
+    border-bottom: 1px solid #999;
+}
+
+.settingsItem {
+    border-top: 1px solid #ccc;
+}
+
+.settingsItem:first-child {
+    border-top: none;
+}
+
+.settingsItem input {
+    font-size: 0.9em;
+    width: 45%;
+    margin: 0.5% 0 0.5% 1%;
+}
+
+.settingsItem button {
+    color: #C90000;
+    font-size: 0.9em;
+}
+
+#addNewSetting {
+    margin: 1%;
+    font-size: 0.95em;
+}
+
+#overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: none;
+    z-index: 100;
+}
+
+h1 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+hr {
+    margin: 50px 0;
+}
+
+input, select {
+    font-family: Lato, sans-serif;
+}
+
+select {
+    -webkit-appearance: menulist-button;
+}
+
+input[type="submit"], input[type="button"] {
+    -webkit-appearance: button;
+}
+
+body {
+    margin: 30px;
+    font-family: Lato, sans-serif;
+}

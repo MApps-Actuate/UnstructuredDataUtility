@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Unstructured Analytics">
+    <output-path>$PROJECT_DIR$/out/artifacts/Unstructured Analytics</output-path>
+    <root id="archive" name="UnstructuredAnalytics.jar">
+      <element id="module-output" name="Unstructured Analytics" />
+    </root>
+  </artifact>
+</component>

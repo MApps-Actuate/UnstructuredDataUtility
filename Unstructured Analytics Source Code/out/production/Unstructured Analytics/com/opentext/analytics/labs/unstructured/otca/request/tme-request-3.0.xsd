@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" version="1.0" jaxb:version="2.1">
+    <xs:element name="Nserver" type="Nserver"/>
+    <xs:complexType name="Nserver">
+        <xs:all>
+            <xs:element name="ID" type="xs:string" minOccurs="0"/>
+            <xs:element name="LanguageID" type="xs:string" minOccurs="0"/>
+            <xs:element name="Methods" type="Methods" minOccurs="0"/>
+            <xs:element name="Priority" type="xs:string" minOccurs="0"/>
+            <xs:element name="RequestMode" type="xs:string" minOccurs="0"/>
+            <xs:element name="ResultEncoding" type="xs:string" minOccurs="0"/>
+            <xs:element name="NSTEIN_Text" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <jaxb:property name="TextValue"/>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="TextID" type="xs:string" minOccurs="0"/>
+            <xs:element name="Texts" type="Texts" minOccurs="0"/>
+        </xs:all>
+        <xs:attribute name="Version" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="Methods">
+        <xs:sequence>
+            <xs:element name="Ping" type="Ping"/>
+            <xs:element name="GetSupportedEncodings" type="GetSupportedEncodings"/>
+            <xs:element name="languagedetector" type="LanguageDetector">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <jaxb:property name="LanguageDetector"/>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="nconceptextractor" type="ConceptExtractor">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <jaxb:property name="ConceptExtractor"/>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ncategorizer" type="Categorizer">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <jaxb:property name="Categorizer"/>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="nfinder" type="Finder">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <jaxb:property name="Finder"/>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="nsentiment" type="Sentiment">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <jaxb:property name="Sentiment"/>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="nlikethis" type="LikeThis">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <jaxb:property name="LikeThis"/>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="nsummarizer" type="Summarizer">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <jaxb:property name="Summarizer"/>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Ping">
+        <xs:sequence/>
+        <xs:attribute name="Name" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="GetSupportedEncodings">
+        <xs:sequence/>
+        <xs:attribute name="Name" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="LanguageDetector">
+        <xs:sequence>
+            <xs:element name="Mode" type="LanguageDetectorMode" minOccurs="0"/>
+            <xs:element name="OutputParagraphs" type="xs:boolean" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="Name" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="ConceptExtractor">
+        <xs:all>
+            <xs:element name="Mode" type="ConceptExtractorMode" minOccurs="0"/>
+            <xs:element name="ComplexConcepts" type="ComplexConcepts" minOccurs="0"/>
+            <xs:element name="SimpleConcepts" type="SimpleConcepts" minOccurs="0"/>
+            <xs:element name="ExcludeEntities" type="ExcludeEntities" minOccurs="0"/>
+            <xs:element name="ResultLayout" type="ResultLayout" minOccurs="0"/>
+        </xs:all>
+        <xs:attribute name="Name" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="ComplexConcepts">
+        <xs:all>
+            <xs:element name="RelevancyLevel" type="RelevancyLevel" minOccurs="0"/>
+            <xs:element name="NumberOfComplexConcepts" type="xs:int" minOccurs="0"/>
+        </xs:all>
+    </xs:complexType>
+    <xs:complexType name="SimpleConcepts">
+        <xs:sequence>
+            <xs:element name="NumberOfSimpleConcepts" type="xs:int" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ExcludeEntities">
+        <xs:sequence/>
+    </xs:complexType>
+    <xs:complexType name="Categorizer">
+        <xs:sequence>
+            <xs:element name="KBid" type="xs:string" minOccurs="0"/>
+            <xs:element name="NumberOfCategories" type="xs:int" minOccurs="0"/>
+            <xs:element name="RejectedCategories" type="RejectedCategories" minOccurs="0"/>
+            <xs:element name="KnowledgeBase" type="KnowledgeBase" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="Name" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="RejectedCategories">
+        <xs:sequence>
+            <xs:element name="NumberOfRejectedCategories" type="xs:int" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="KnowledgeBase">
+        <xs:all>
+            <xs:element name="KBid" type="xs:string"/>
+            <xs:element name="NumberOfCategories" type="xs:int" minOccurs="0"/>
+            <xs:element name="RejectedCategories" type="RejectedCategories" minOccurs="0"/>
+            <xs:element name="OutputAttributes" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="OutputParents" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="OutputParentsAttributes" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="LegacyResult" type="xs:boolean" minOccurs="0"/>
+        </xs:all>
+    </xs:complexType>
+    <xs:complexType name="Finder">
+        <xs:sequence>
+            <xs:choice minOccurs="0">
+                <xs:element name="nfExtract" type="Extract">
+                    <xs:annotation>
+                        <xs:appinfo>
+                            <jaxb:property name="Extract"/>
+                        </xs:appinfo>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="nfFullTextSearch" type="FullTextSearch">
+                    <xs:annotation>
+                        <xs:appinfo>
+                            <jaxb:property name="FullTextSearch"/>
+                        </xs:appinfo>
+                    </xs:annotation>
+                </xs:element>
+            </xs:choice>
+        </xs:sequence>
+        <xs:attribute name="Name" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="Extract">
+        <xs:sequence>
+            <xs:element name="Cartridges" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Cartridge" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="OutputSubterms" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="OutputAttributes" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="OutputParents" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="OutputParentsAttributes" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="OutputHomonyms" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="OutputHomonymsAttributes" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="OutputHomonymsParents" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="Hierarchy" type="Hierarchy" minOccurs="0"/>
+            <xs:element name="nsentiment" type="Sentiment">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <jaxb:property name="Sentiment"/>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Hierarchy">
+        <xs:sequence/>
+    </xs:complexType>
+    <xs:complexType name="FullTextSearch">
+        <xs:sequence>
+            <xs:element name="Cartridges" type="Cartridges" minOccurs="0"/>
+            <xs:element name="OutputSubterms" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="OutputAttributes" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="OutputParents" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="OutputParentsAttributes" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="OutputHomonyms" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="OutputHomonymsAttributes" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="OutputHomonymsParents" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="Hierarchy" type="Hierarchy" minOccurs="0"/>
+            <xs:element name="nsentiment" type="Sentiment">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <jaxb:property name="Sentiment"/>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Cartridges">
+        <xs:sequence>
+            <xs:element name="Cartridge" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Sentiment">
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="Name" type="xs:string">
+            <xs:annotation>
+                <xs:appinfo>
+                    <jaxb:property name="KnowledgeBaseName"/>
+                </xs:appinfo>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="LikeThis">
+        <xs:sequence>
+            <xs:choice minOccurs="0">
+                <xs:element name="Index" type="LikeThisIndex"/>
+                <xs:element name="IsTextIndexed" type="LikeThisIsTextIndexed"/>
+                <xs:element name="Compare" type="LikeThisCompare"/>
+                <xs:element name="Delete" type="LikeThisDelete"/>
+                <xs:element name="Optimize" type="LikeThisOptimize"/>
+                <xs:element name="GetAllIds" type="LikeThisGetAllIds"/>
+                <xs:element name="GetStats" type="LikeThisGetStats"/>
+            </xs:choice>
+        </xs:sequence>
+        <xs:attribute name="Name" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="LikeThisIndex">
+        <xs:sequence>
+            <xs:element name="KBid" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="LikeThisIsTextIndexed">
+        <xs:sequence>
+            <xs:element name="KBid" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="LikeThisCompare">
+        <xs:all>
+            <xs:element name="KBid" type="xs:string"/>
+            <xs:element name="NumberOfMatchedFiles" type="xs:int" minOccurs="0"/>
+            <xs:element name="EnableFastSearch" type="EnabledFastSearch" minOccurs="0"/>
+            <xs:element name="NoIndexing" type="NoIndexing" minOccurs="0"/>
+        </xs:all>
+    </xs:complexType>
+    <xs:complexType name="EnabledFastSearch">
+        <xs:sequence/>
+    </xs:complexType>
+    <xs:complexType name="NoIndexing">
+        <xs:sequence/>
+    </xs:complexType>
+    <xs:complexType name="LikeThisDelete">
+        <xs:sequence>
+            <xs:element name="KBid" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="LikeThisOptimize">
+        <xs:sequence>
+            <xs:element name="KBid" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="LikeThisGetAllIds">
+        <xs:sequence>
+            <xs:element name="KBid" type="xs:string"/>
+            <xs:element name="Offset" type="xs:int" minOccurs="0"/>
+            <xs:element name="Size" type="xs:int" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="LikeThisGetStats">
+        <xs:sequence>
+            <xs:element name="KBid" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Summarizer">
+        <xs:all>
+            <xs:element name="KBid" type="xs:string"/>
+            <xs:element name="UseCategories" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Category" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="NbSentences" type="xs:int" minOccurs="0"/>
+            <xs:element name="Percentage" type="xs:int" minOccurs="0"/>
+            <xs:element name="MultipleTexts" type="xs:boolean" minOccurs="0"/>
+        </xs:all>
+        <xs:attribute name="Name" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="Texts">
+        <xs:sequence>
+            <xs:element name="Text" type="Text" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Text">
+        <xs:all>
+            <xs:element name="TextID" type="xs:string" minOccurs="0"/>
+            <xs:element name="LanguageID" type="xs:string" minOccurs="0"/>
+            <xs:element name="NSTEIN_Text" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <jaxb:property name="TextValue"/>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+        </xs:all>
+    </xs:complexType>
+    <xs:simpleType name="LanguageDetectorMode">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="text"/>
+            <xs:enumeration value="paragraph"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="ConceptExtractorMode">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="NCONCEPT"/>
+            <xs:enumeration value="NFINDER"/>
+            <xs:enumeration value="NCATEGORIZER"/>
+            <xs:enumeration value="NSUMMARIZER"/>
+            <xs:enumeration value="FAST"/>
+            <xs:enumeration value="PHOTOCAPTION"/>
+            <xs:enumeration value="NLIKETHIS"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="RelevancyLevel">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="FIRST"/>
+            <xs:enumeration value="SECOND"/>
+            <xs:enumeration value="THIRD"/>
+            <xs:enumeration value="ALL"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="ResultLayout">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="NCONCEPTEXTRACTOR"/>
+            <xs:enumeration value="NFINDER"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

@@ -1,0 +1,102 @@
+<html>
+<head>
+    <title>Unstructured Analytics Loader</title>
+    <script type="text/javascript" src="js/jquery-3.1.0.js"></script>
+    <script type="text/javascript" src="js/jquery.form.js"></script>
+    <script type="text/javascript" src="js/web-load.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="stylesheet" href="css/web-load.css">
+</head>
+<body>
+<div id="content">
+
+    <div id="load">
+        <h1>Load into Project</h1>
+
+        <form id="loadForm" action="/load" method="POST" enctype="multipart/form-data">
+            <div class="formItem">
+                <label for="projectSelect">Select Project</label>
+                <select id="projectSelect" name="id"></select>
+            </div>
+            <div style="text-align:right; margin-top:5px">
+                <button id="showSettings">Loader Settings...</button>
+            </div>
+            <div class="formItem">
+                <label for="loadPassword">Password</label>
+                <input id="loadPassword" type="password" name="password">
+            </div>
+            <div class="formItem">
+                <label for="dataFile">Select ZIP or TEXT file</label>
+                <input id="dataFile" type="file" name="data" size="50">
+            </div>
+            <div class="formItem">
+                <input type="submit" value="Load">
+            </div>
+        </form>
+    </div>
+
+    <hr align="left">
+
+    <div id="create">
+        <h1>Create new Project</h1>
+
+        <form id="newForm" action="/projects" method="POST">
+            <div class="formItem">
+                <label for="name">Project Name</label>
+                <input id="name" type="text" name="name">
+            </div>
+            <div class="formItem">
+                <label for="newPassword">Password</label>
+                <input id="newPassword" type="password" name="password">
+            </div>
+            <div class="formItem">
+                <label for="newPasswordConfirm">Confirm Password</label>
+                <input id="newPasswordConfirm" type="password" name="passwordConfirm">
+            </div>
+            <div class="formItem">
+                <input type="Submit" value="Create">
+            </div>
+        </form>
+    </div>
+
+    <div id="update">
+        <div style="text-align:right">
+            <span title="Close" id="closeUpdate">X</span>
+        </div>
+        <h1 style="margin-top:-15px">Update [Project] Settings</h1>
+
+        <form id="updateForm" action="/projects">
+            <div id="settings">
+                <div>
+                    <span class="settingTitle">Name</span>
+                    <span class="settingTitle">Value</span>
+                </div>
+                <div id="settingsItems"></div>
+                <button id="addNewSetting">Add Setting</button>
+            </div>
+            <div class="formItem">
+                <label for="updatePassword">Password</label>
+                <input id="updatePassword" type="password" name="password">
+            </div>
+            <div class="formItem">
+                <input type="Submit" value="Update">
+            </div>
+        </form>
+
+        <div style="display:none">
+            <div id="settingsItemTemplate">
+                <div class="settingsItem">
+                    <input type="text" class="settingName" name="settingName">
+                    <input type="text" class="settingValue" name="settingValue">
+                    <button class="removeSetting" title="Remove Setting">X</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="overlay"></div>
+</body>
+</html>

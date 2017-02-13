@@ -1,0 +1,1740 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.6.0.v201610042049</property>
+    <property name="units">in</property>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="layoutPreference">auto layout</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <list-property name="libraries">
+        <structure>
+            <property name="fileName">/ThemesReportItems31.rptlibrary</property>
+            <property name="namespace">ThemesReportItems31</property>
+        </structure>
+    </list-property>
+    <data-sources>
+        <data-mart-data-source name="Data Source" id="4">
+            <property name="datamartURL">Data Objects/OTCA</property>
+            <property name="accessType">transient</property>
+        </data-mart-data-source>
+    </data-sources>
+    <property name="linkedDataModels">
+        <data-mart-linked-data-model name="Document Sentiments" id="5">
+            <property name="dataSource">Data Source</property>
+            <property name="dataObject">Document Sentiments</property>
+        </data-mart-linked-data-model>
+        <data-mart-linked-data-model name="Sentence Sentiments" id="105">
+            <property name="dataSource">Data Source</property>
+            <property name="dataObject">Sentence Sentiments</property>
+        </data-mart-linked-data-model>
+        <data-mart-linked-data-model name="Terms" id="197">
+            <property name="dataSource">Data Source</property>
+            <property name="dataObject">Terms</property>
+        </data-mart-linked-data-model>
+        <data-mart-linked-data-model name="Categories" id="290">
+            <property name="dataSource">Data Source</property>
+            <property name="dataObject">Categories</property>
+        </data-mart-linked-data-model>
+        <data-mart-linked-data-model name="Concepts" id="383">
+            <property name="dataSource">Data Source</property>
+            <property name="dataObject">Concepts</property>
+        </data-mart-linked-data-model>
+    </property>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <property name="orientation">landscape</property>
+            <page-footer>
+                <text id="3">
+                    <property name="contentType">html</property>
+                    <text-property name="content"><![CDATA[<value-of>new Date()</value-of>]]></text-property>
+                </text>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <grid id="833">
+            <column id="834"/>
+            <column id="835"/>
+            <row id="836">
+                <cell id="837">
+                    <property name="paddingLeft">60pt</property>
+                    <grid id="839">
+                        <column id="840"/>
+                        <row id="841">
+                            <cell id="842">
+                                <table id="847">
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">doc_id</property>
+                                            <text-property name="displayName">doc_id</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["doc_id"]</expression>
+                                            <property name="dataType">integer</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">category</property>
+                                            <text-property name="displayName">category</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["category"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">Aggregation</property>
+                                            <property name="dataType">integer</property>
+                                            <property name="aggregateFunction">COUNTDISTINCT</property>
+                                            <list-property name="arguments">
+                                                <structure>
+                                                    <property name="name">Expression</property>
+                                                    <expression name="value" type="javascript">row["doc_id"]</expression>
+                                                </structure>
+                                            </list-property>
+                                            <property name="allowExport">true</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="linkedDataModel">Categories</property>
+                                    <column id="852"/>
+                                    <header>
+                                        <row id="848">
+                                            <cell id="849">
+                                                <property name="backgroundColor">#00C0EF</property>
+                                                <property name="fontFamily">"Calibri"</property>
+                                                <property name="fontWeight">bold</property>
+                                                <property name="color">#FFFFFF</property>
+                                                <property name="paddingTop">6pt</property>
+                                                <property name="paddingBottom">6pt</property>
+                                                <property name="verticalAlign">middle</property>
+                                                <text id="850">
+                                                    <property name="fontSize">24pt</property>
+                                                    <property name="contentType">html</property>
+                                                    <text-property name="content"><![CDATA[<VALUE-OF>row["Aggregation"]</VALUE-OF>]]></text-property>
+                                                </text>
+                                                <text id="851">
+                                                    <property name="fontSize">14pt</property>
+                                                    <property name="contentType">html</property>
+                                                    <text-property name="content"><![CDATA[documents]]></text-property>
+                                                </text>
+                                            </cell>
+                                        </row>
+                                    </header>
+                                </table>
+                            </cell>
+                        </row>
+                        <row id="843">
+                            <cell id="844">
+                                <table id="853">
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">concept</property>
+                                            <text-property name="displayName">concept</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["concept"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">Aggregation</property>
+                                            <property name="dataType">integer</property>
+                                            <property name="aggregateFunction">COUNT</property>
+                                            <list-property name="arguments">
+                                                <structure>
+                                                    <property name="name">Expression</property>
+                                                    <expression name="value" type="javascript">row["concept"]</expression>
+                                                </structure>
+                                            </list-property>
+                                            <property name="allowExport">true</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="linkedDataModel">Concepts</property>
+                                    <column id="858"/>
+                                    <header>
+                                        <row id="854">
+                                            <cell id="855">
+                                                <property name="backgroundColor">#F39C12</property>
+                                                <property name="fontFamily">"Calibri"</property>
+                                                <property name="fontWeight">bold</property>
+                                                <property name="color">#FFFFFF</property>
+                                                <property name="paddingTop">6pt</property>
+                                                <property name="paddingBottom">6pt</property>
+                                                <property name="verticalAlign">middle</property>
+                                                <text id="856">
+                                                    <property name="fontSize">24pt</property>
+                                                    <property name="contentType">html</property>
+                                                    <text-property name="content"><![CDATA[<VALUE-OF>row["Aggregation"]</VALUE-OF>]]></text-property>
+                                                </text>
+                                                <text id="857">
+                                                    <property name="fontSize">14pt</property>
+                                                    <property name="contentType">html</property>
+                                                    <text-property name="content"><![CDATA[concepts]]></text-property>
+                                                </text>
+                                            </cell>
+                                        </row>
+                                    </header>
+                                </table>
+                            </cell>
+                        </row>
+                        <row id="845">
+                            <cell id="846">
+                                <table id="859">
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">doc_id</property>
+                                            <text-property name="displayName">doc_id</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["doc_id"]</expression>
+                                            <property name="dataType">integer</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">category</property>
+                                            <text-property name="displayName">category</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["category"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                        <structure>
+                                            <property name="name">Aggregation</property>
+                                            <property name="dataType">integer</property>
+                                            <property name="aggregateFunction">COUNT</property>
+                                            <list-property name="arguments">
+                                                <structure>
+                                                    <property name="name">Expression</property>
+                                                    <expression name="value" type="javascript">row["category"]</expression>
+                                                </structure>
+                                            </list-property>
+                                            <property name="allowExport">true</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="linkedDataModel">Categories</property>
+                                    <column id="864"/>
+                                    <header>
+                                        <row id="860">
+                                            <cell id="861">
+                                                <property name="backgroundColor">#0086D7</property>
+                                                <property name="fontFamily">"Calibri"</property>
+                                                <property name="fontWeight">bold</property>
+                                                <property name="color">#FFFFFF</property>
+                                                <property name="paddingTop">6pt</property>
+                                                <property name="paddingBottom">6pt</property>
+                                                <property name="verticalAlign">middle</property>
+                                                <text id="862">
+                                                    <property name="fontSize">24pt</property>
+                                                    <property name="contentType">html</property>
+                                                    <text-property name="content"><![CDATA[<VALUE-OF>row["Aggregation"]</VALUE-OF>]]></text-property>
+                                                </text>
+                                                <text id="863">
+                                                    <property name="fontSize">14pt</property>
+                                                    <property name="contentType">html</property>
+                                                    <text-property name="content"><![CDATA[categories]]></text-property>
+                                                </text>
+                                            </cell>
+                                        </row>
+                                    </header>
+                                </table>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+                <cell id="838">
+                    <property name="verticalAlign">middle</property>
+                    <table id="865">
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">doc_id</property>
+                                <text-property name="displayName">doc_id</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["doc_id"]</expression>
+                                <property name="dataType">integer</property>
+                            </structure>
+                            <structure>
+                                <property name="name">tone</property>
+                                <text-property name="displayName">tone</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["tone"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">subjectivity</property>
+                                <text-property name="displayName">subjectivity</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["subjectivity"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">nbPositive</property>
+                                <property name="dataType">integer</property>
+                                <property name="aggregateFunction">COUNT</property>
+                                <list-property name="arguments">
+                                    <structure>
+                                        <property name="name">Expression</property>
+                                        <expression name="value" type="javascript">row["tone"]</expression>
+                                    </structure>
+                                </list-property>
+                                <expression name="filterExpr" type="javascript">row["tone"]=="positive"</expression>
+                                <property name="allowExport">true</property>
+                            </structure>
+                            <structure>
+                                <property name="name">nbNegative</property>
+                                <property name="dataType">integer</property>
+                                <property name="aggregateFunction">COUNT</property>
+                                <list-property name="arguments">
+                                    <structure>
+                                        <property name="name">Expression</property>
+                                        <expression name="value" type="javascript">row["tone"]</expression>
+                                    </structure>
+                                </list-property>
+                                <expression name="filterExpr" type="javascript">row["tone"] == "negative"</expression>
+                                <property name="allowExport">true</property>
+                            </structure>
+                            <structure>
+                                <property name="name">nbNeutral</property>
+                                <property name="dataType">integer</property>
+                                <property name="aggregateFunction">COUNT</property>
+                                <list-property name="arguments">
+                                    <structure>
+                                        <property name="name">Expression</property>
+                                        <expression name="value" type="javascript">row["tone"]</expression>
+                                    </structure>
+                                </list-property>
+                                <expression name="filterExpr" type="javascript">row["tone"] == "neutral"</expression>
+                                <property name="allowExport">true</property>
+                            </structure>
+                        </list-property>
+                        <property name="linkedDataModel">Document Sentiments</property>
+                        <column id="876"/>
+                        <footer>
+                            <row id="866">
+                                <cell id="867">
+                                    <grid id="868">
+                                        <property name="textAlign">center</property>
+                                        <column id="869"/>
+                                        <column id="870"/>
+                                        <row id="871">
+                                            <cell id="872">
+                                                <property name="borderBottomStyle">none</property>
+                                                <property name="borderLeftStyle">none</property>
+                                                <property name="borderRightStyle">none</property>
+                                                <property name="borderTopStyle">none</property>
+                                                <property name="textAlign">right</property>
+                                                <property name="verticalAlign">middle</property>
+                                                <label id="873">
+                                                    <property name="fontFamily">"Calibri"</property>
+                                                    <property name="fontSize">16pt</property>
+                                                    <property name="fontWeight">bold</property>
+                                                    <property name="color">#808080</property>
+                                                    <text-property name="text">Sentiment</text-property>
+                                                </label>
+                                            </cell>
+                                            <cell id="874">
+                                                <property name="borderBottomStyle">none</property>
+                                                <property name="borderLeftStyle">none</property>
+                                                <property name="borderRightStyle">none</property>
+                                                <property name="borderTopStyle">none</property>
+                                                <property name="textAlign">left</property>
+                                                <property name="verticalAlign">middle</property>
+                                                <extended-item extensionName="Chart" id="875">
+                                                    <xml-property name="xmlRepresentation"><![CDATA[<ActuateChart version="2.6.1">
+ <ChartWithAxes version="2.6.1" type="Bar Chart" subType="Percent Stacked" orientation="0">
+  <block>
+   <children _type="TitleBlock" visible="false">
+    <outline>
+     <color _nil="1"/>
+    </outline>
+    <label>
+     <caption value="Sentiment"/>
+     <background _nil="1"/>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </label>
+   </children>
+   <children _type="Plot">
+    <outline>
+     <color _nil="1"/>
+    </outline>
+    <clientArea>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </clientArea>
+   </children>
+   <children _type="Legend">
+    <outline>
+     <color _nil="1"/>
+    </outline>
+    <clientArea>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </clientArea>
+    <separator>
+     <color _nil="1"/>
+    </separator>
+    <title>
+     <background _nil="1"/>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </title>
+   </children>
+   <bounds _body="0.0,0.0,246.0,130.0"/>
+   <outline>
+    <color _nil="1"/>
+   </outline>
+  </block>
+  <extendedProperties name="enable.area.alt" value="false"/>
+  <extendedProperties name="enable.drill.category" value="true"/>
+  <extendedProperties name="enable.drill.series" value="true"/>
+  <extendedProperties name="jschart.animation" value="false"/>
+  <extendedProperties name="jschart.series.shadow" value="false"/>
+  <sampleData>
+   <baseSampleData dataSetRepresentation="6,4,12,8,10"/>
+   <orthogonalSampleData dataSetRepresentation="5,4,12" seriesDefinitionIndex="0"/>
+   <orthogonalSampleData dataSetRepresentation="10.0,8.0,24.0" seriesDefinitionIndex="1"/>
+   <orthogonalSampleData dataSetRepresentation="15.0,12.0,36.0" seriesDefinitionIndex="2"/>
+  </sampleData>
+  <emptyMessage>
+   <caption value="This chart contains no data."/>
+   <background _body=",64,127,127,127"/>
+   <outline>
+    <color _body=",128,127,127,127"/>
+   </outline>
+  </emptyMessage>
+  <axes type="0">
+   <title>
+    <background _nil="1"/>
+    <outline>
+     <color _nil="1"/>
+    </outline>
+   </title>
+   <associatedAxes type="0" primaryAxis="true" percent="true">
+    <title>
+     <background _nil="1"/>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </title>
+    <seriesDefinitions>
+     <query definition=""/>
+     <seriesPalette>
+      <entries _body=",255,155,21,30"/>
+      <entries _body=",255,170,170,170"/>
+      <entries _body=",255,56,198,69"/>
+      <entries _body=",255,128,255,128"/>
+      <entries _body=",255,64,128,128"/>
+      <entries _body=",255,128,128,192"/>
+      <entries _body=",255,170,85,85"/>
+      <entries _body=",255,128,128,0"/>
+      <entries _body=",255,192,192,192"/>
+      <entries _body=",255,255,255,128"/>
+      <entries _body=",255,128,192,128"/>
+      <entries _body=",255,7,146,94"/>
+      <entries _body=",255,0,128,255"/>
+      <entries _body=",255,255,128,192"/>
+      <entries _body=",255,0,255,255"/>
+      <entries _body=",255,255,128,128"/>
+      <entries _body=",255,0,128,192"/>
+      <entries _body=",255,128,128,192"/>
+      <entries _body=",255,255,0,255"/>
+      <entries _body=",255,128,64,64"/>
+      <entries _body=",255,255,128,64"/>
+      <entries _body=",255,80,240,120"/>
+      <entries _body=",255,0,64,128"/>
+      <entries _body=",255,128,0,64"/>
+      <entries _body=",255,255,0,128"/>
+      <entries _body=",255,128,128,64"/>
+      <entries _body=",255,128,128,128"/>
+      <entries _body=",255,255,128,255"/>
+      <entries _body=",255,0,64,0"/>
+      <entries _body=",255,0,0,0"/>
+      <entries _body=",255,255,255,255"/>
+      <entries _body=",255,255,128,0"/>
+     </seriesPalette>
+     <series _type="BarSeries" seriesIdentifier="Negative" labelPosition="4" stacked="true" riser="0">
+      <label>
+       <background _nil="1"/>
+       <outline>
+        <color _nil="1"/>
+       </outline>
+      </label>
+      <dataDefinition definition="row[&quot;nbNegative&quot;]">
+       <grouping enabled="true" aggregateExpression="Count"/>
+      </dataDefinition>
+      <triggers condition="6">
+       <action type="1">
+        <value _type="TooltipValue" text="" delay="200"/>
+       </action>
+      </triggers>
+      <curveFitting _nil="1"/>
+     </series>
+    </seriesDefinitions>
+    <seriesDefinitions>
+     <query definition=""/>
+     <seriesPalette>
+      <entries _body=",255,170,170,170"/>
+      <entries _body=",255,56,198,69"/>
+      <entries _body=",255,128,255,128"/>
+      <entries _body=",255,64,128,128"/>
+      <entries _body=",255,128,128,192"/>
+      <entries _body=",255,170,85,85"/>
+      <entries _body=",255,128,128,0"/>
+      <entries _body=",255,192,192,192"/>
+      <entries _body=",255,255,255,128"/>
+      <entries _body=",255,128,192,128"/>
+      <entries _body=",255,7,146,94"/>
+      <entries _body=",255,0,128,255"/>
+      <entries _body=",255,255,128,192"/>
+      <entries _body=",255,0,255,255"/>
+      <entries _body=",255,255,128,128"/>
+      <entries _body=",255,0,128,192"/>
+      <entries _body=",255,128,128,192"/>
+      <entries _body=",255,255,0,255"/>
+      <entries _body=",255,128,64,64"/>
+      <entries _body=",255,255,128,64"/>
+      <entries _body=",255,80,240,120"/>
+      <entries _body=",255,0,64,128"/>
+      <entries _body=",255,128,0,64"/>
+      <entries _body=",255,255,0,128"/>
+      <entries _body=",255,128,128,64"/>
+      <entries _body=",255,128,128,128"/>
+      <entries _body=",255,255,128,255"/>
+      <entries _body=",255,0,64,0"/>
+      <entries _body=",255,0,0,0"/>
+      <entries _body=",255,255,255,255"/>
+      <entries _body=",255,255,128,0"/>
+      <entries _body=",255,155,21,30"/>
+     </seriesPalette>
+     <series _type="BarSeries" seriesIdentifier="Neutral" labelPosition="4" stacked="true" riser="0">
+      <label>
+       <background _nil="1"/>
+       <outline>
+        <color _nil="1"/>
+       </outline>
+      </label>
+      <dataDefinition definition="row[&quot;nbNeutral&quot;]">
+       <grouping enabled="true" aggregateExpression="Count"/>
+      </dataDefinition>
+      <triggers condition="6">
+       <action type="1">
+        <value _type="TooltipValue" text="" delay="200"/>
+       </action>
+      </triggers>
+      <curveFitting _nil="1"/>
+     </series>
+    </seriesDefinitions>
+    <seriesDefinitions>
+     <query definition=""/>
+     <seriesPalette>
+      <entries _body=",255,56,198,69"/>
+      <entries _body=",255,128,255,128"/>
+      <entries _body=",255,64,128,128"/>
+      <entries _body=",255,128,128,192"/>
+      <entries _body=",255,170,85,85"/>
+      <entries _body=",255,128,128,0"/>
+      <entries _body=",255,192,192,192"/>
+      <entries _body=",255,255,255,128"/>
+      <entries _body=",255,128,192,128"/>
+      <entries _body=",255,7,146,94"/>
+      <entries _body=",255,0,128,255"/>
+      <entries _body=",255,255,128,192"/>
+      <entries _body=",255,0,255,255"/>
+      <entries _body=",255,255,128,128"/>
+      <entries _body=",255,0,128,192"/>
+      <entries _body=",255,128,128,192"/>
+      <entries _body=",255,255,0,255"/>
+      <entries _body=",255,128,64,64"/>
+      <entries _body=",255,255,128,64"/>
+      <entries _body=",255,80,240,120"/>
+      <entries _body=",255,0,64,128"/>
+      <entries _body=",255,128,0,64"/>
+      <entries _body=",255,255,0,128"/>
+      <entries _body=",255,128,128,64"/>
+      <entries _body=",255,128,128,128"/>
+      <entries _body=",255,255,128,255"/>
+      <entries _body=",255,0,64,0"/>
+      <entries _body=",255,0,0,0"/>
+      <entries _body=",255,255,255,255"/>
+      <entries _body=",255,255,128,0"/>
+      <entries _body=",255,155,21,30"/>
+      <entries _body=",255,170,170,170"/>
+     </seriesPalette>
+     <series _type="BarSeries" seriesIdentifier="Positive" labelPosition="4" stacked="true" riser="0">
+      <label>
+       <background _nil="1"/>
+       <outline>
+        <color _nil="1"/>
+       </outline>
+      </label>
+      <dataDefinition definition="row[&quot;nbPositive&quot;]">
+       <grouping enabled="true" aggregateExpression="Count"/>
+      </dataDefinition>
+      <triggers condition="6">
+       <action type="1">
+        <value _type="TooltipValue" text="" delay="200"/>
+       </action>
+      </triggers>
+      <curveFitting _nil="1"/>
+     </series>
+    </seriesDefinitions>
+    <lineAttributes visible="false">
+     <color _nil="1"/>
+    </lineAttributes>
+    <label visible="false">
+     <background _nil="1"/>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </label>
+    <majorGrid>
+     <lineAttributes>
+      <color _nil="1"/>
+     </lineAttributes>
+     <tickAttributes>
+      <color _nil="1"/>
+     </tickAttributes>
+    </majorGrid>
+    <minorGrid>
+     <lineAttributes>
+      <color _nil="1"/>
+     </lineAttributes>
+     <tickAttributes>
+      <color _nil="1"/>
+     </tickAttributes>
+    </minorGrid>
+    <origin>
+     <value _nil="1"/>
+    </origin>
+   </associatedAxes>
+   <seriesDefinitions>
+    <query definition=""/>
+    <seriesPalette>
+     <entries _body=",255,155,21,30"/>
+     <entries _body=",255,170,170,170"/>
+     <entries _body=",255,56,198,69"/>
+     <entries _body=",255,128,255,128"/>
+     <entries _body=",255,64,128,128"/>
+     <entries _body=",255,128,128,192"/>
+     <entries _body=",255,170,85,85"/>
+     <entries _body=",255,128,128,0"/>
+     <entries _body=",255,192,192,192"/>
+     <entries _body=",255,255,255,128"/>
+     <entries _body=",255,128,192,128"/>
+     <entries _body=",255,7,146,94"/>
+     <entries _body=",255,0,128,255"/>
+     <entries _body=",255,255,128,192"/>
+     <entries _body=",255,0,255,255"/>
+     <entries _body=",255,255,128,128"/>
+     <entries _body=",255,0,128,192"/>
+     <entries _body=",255,128,128,192"/>
+     <entries _body=",255,255,0,255"/>
+     <entries _body=",255,128,64,64"/>
+     <entries _body=",255,255,128,64"/>
+     <entries _body=",255,80,240,120"/>
+     <entries _body=",255,0,64,128"/>
+     <entries _body=",255,128,0,64"/>
+     <entries _body=",255,255,0,128"/>
+     <entries _body=",255,128,128,64"/>
+     <entries _body=",255,128,128,128"/>
+     <entries _body=",255,255,128,255"/>
+     <entries _body=",255,0,64,0"/>
+     <entries _body=",255,0,0,0"/>
+     <entries _body=",255,255,255,255"/>
+     <entries _body=",255,255,128,0"/>
+    </seriesPalette>
+    <series seriesIdentifier="">
+     <label>
+      <background _nil="1"/>
+      <outline>
+       <color _nil="1"/>
+      </outline>
+     </label>
+     <dataDefinition definition="1"/>
+     <curveFitting _nil="1"/>
+    </series>
+    <grouping groupType="0"/>
+   </seriesDefinitions>
+   <lineAttributes visible="false">
+    <color _nil="1"/>
+   </lineAttributes>
+   <label visible="false">
+    <background _nil="1"/>
+    <outline>
+     <color _nil="1"/>
+    </outline>
+   </label>
+   <majorGrid>
+    <lineAttributes>
+     <color _nil="1"/>
+    </lineAttributes>
+    <tickAttributes>
+     <color _nil="1"/>
+    </tickAttributes>
+   </majorGrid>
+   <minorGrid>
+    <lineAttributes>
+     <color _nil="1"/>
+    </lineAttributes>
+    <tickAttributes>
+     <color _nil="1"/>
+    </tickAttributes>
+   </minorGrid>
+   <origin>
+    <value _nil="1"/>
+   </origin>
+  </axes>
+  <rotation>
+   <angles/>
+  </rotation>
+ </ChartWithAxes>
+</ActuateChart>
+]]></xml-property>
+                                                    <property name="outputFormat">JS</property>
+                                                    <property name="inheritColumns">false</property>
+                                                    <property name="height">90pt</property>
+                                                    <property name="width">300pt</property>
+                                                    <property name="theme">ThemesReportItems31.Chart-Modern</property>
+                                                </extended-item>
+                                            </cell>
+                                        </row>
+                                    </grid>
+                                </cell>
+                            </row>
+                        </footer>
+                    </table>
+                </cell>
+            </row>
+        </grid>
+        <grid id="512">
+            <column id="513">
+                <property name="width">50%</property>
+            </column>
+            <column id="514">
+                <property name="width">50%</property>
+            </column>
+            <row id="515">
+                <cell id="516">
+                    <property name="colSpan">1</property>
+                    <property name="rowSpan">1</property>
+                    <property name="paddingTop">12pt</property>
+                    <property name="paddingLeft">6pt</property>
+                    <label id="509">
+                        <property name="fontFamily">"Calibri"</property>
+                        <property name="fontSize">16pt</property>
+                        <property name="fontWeight">bold</property>
+                        <text-property name="text">Top 20 concepts</text-property>
+                    </label>
+                </cell>
+                <cell id="748">
+                    <property name="paddingTop">12pt</property>
+                    <property name="paddingLeft">6pt</property>
+                    <label id="749">
+                        <property name="fontFamily">"Calibri"</property>
+                        <property name="fontSize">16pt</property>
+                        <property name="fontWeight">bold</property>
+                        <text-property name="text">Top 20 categories</text-property>
+                    </label>
+                </cell>
+            </row>
+            <row id="518">
+                <cell id="519">
+                    <property name="borderBottomColor">#C0C0C0</property>
+                    <property name="borderBottomStyle">solid</property>
+                    <property name="borderBottomWidth">1px</property>
+                    <property name="borderLeftColor">#C0C0C0</property>
+                    <property name="borderLeftStyle">solid</property>
+                    <property name="borderLeftWidth">1px</property>
+                    <property name="borderRightColor">#C0C0C0</property>
+                    <property name="borderRightStyle">solid</property>
+                    <property name="borderRightWidth">1px</property>
+                    <property name="borderTopColor">#C0C0C0</property>
+                    <property name="borderTopStyle">solid</property>
+                    <property name="borderTopWidth">1px</property>
+                    <table name="ConceptTable" id="476">
+                        <list-property name="userProperties">
+                            <structure>
+                                <property name="name">__ac_group_collapse_level</property>
+                                <property name="type">string</property>
+                            </structure>
+                        </list-property>
+                        <list-property name="visibility">
+                            <structure>
+                                <property name="format">all</property>
+                                <expression name="valueExpr" type="javascript">true</expression>
+                            </structure>
+                        </list-property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">concept</property>
+                                <text-property name="displayName">concept</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["concept"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">frequency</property>
+                                <text-property name="displayName">frequency</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["frequency"]</expression>
+                                <property name="dataType">integer</property>
+                            </structure>
+                            <structure>
+                                <property name="name">frequencyByConcept</property>
+                                <property name="dataType">float</property>
+                                <simple-property-list name="aggregateOn">
+                                    <value>NewTableGroup1</value>
+                                </simple-property-list>
+                                <property name="aggregateFunction">SUM</property>
+                                <list-property name="arguments">
+                                    <structure>
+                                        <property name="name">Expression</property>
+                                        <expression name="value" type="javascript">row["frequency"]</expression>
+                                    </structure>
+                                </list-property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                        </list-property>
+                        <property name="linkedDataModel">Concepts</property>
+                        <list-property name="filter">
+                            <structure>
+                                <property name="operator">top-n</property>
+                                <expression name="expr" type="javascript">row["frequencyByConcept"]</expression>
+                                <simple-property-list name="value1">
+                                    <value type="javascript">20</value>
+                                </simple-property-list>
+                                <property name="updateAggregation">true</property>
+                            </structure>
+                        </list-property>
+                        <column id="490"/>
+                        <column id="491"/>
+                        <header>
+                            <row id="477">
+                                <cell id="478">
+                                    <label id="479">
+                                        <text-property name="text">concept</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="480">
+                                    <label id="481">
+                                        <text-property name="text">frequency</text-property>
+                                    </label>
+                                </cell>
+                            </row>
+                        </header>
+                        <group id="492">
+                            <property name="groupName">NewTableGroup1</property>
+                            <expression name="keyExpr" type="javascript">row["concept"]</expression>
+                            <structure name="toc">
+                                <expression name="expressionValue" type="javascript">row["concept"]</expression>
+                            </structure>
+                            <property name="hideDetail">false</property>
+                            <list-property name="sort">
+                                <structure>
+                                    <expression name="key" type="javascript">row["frequencyByConcept"]</expression>
+                                    <property name="direction">desc</property>
+                                    <property name="strength">-1</property>
+                                </structure>
+                            </list-property>
+                            <header>
+                                <row id="493">
+                                    <cell id="494">
+                                        <data id="499">
+                                            <property name="resultSetColumn">concept</property>
+                                        </data>
+                                    </cell>
+                                    <cell id="495">
+                                        <data id="500">
+                                            <property name="resultSetColumn">frequencyByConcept</property>
+                                        </data>
+                                    </cell>
+                                </row>
+                            </header>
+                        </group>
+                    </table>
+                    <extended-item extensionName="Chart" id="511">
+                        <xml-property name="xmlRepresentation"><![CDATA[<ActuateChart version="2.6.1">
+ <ChartWithAxes version="2.6.1" type="Bar Chart" subType="Side-by-side" orientation="0" reverseCategory="true">
+  <block>
+   <children _type="TitleBlock" visible="false">
+    <outline>
+     <color _nil="1"/>
+    </outline>
+    <label>
+     <background _nil="1"/>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </label>
+   </children>
+   <children _type="Plot">
+    <outline>
+     <color _nil="1"/>
+    </outline>
+    <clientArea>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </clientArea>
+   </children>
+   <children _type="Legend" visible="false">
+    <outline>
+     <color _nil="1"/>
+    </outline>
+    <clientArea>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </clientArea>
+    <separator>
+     <color _nil="1"/>
+    </separator>
+    <title>
+     <background _nil="1"/>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </title>
+   </children>
+   <bounds _body="0.0,0.0,567.0,130.0"/>
+   <outline>
+    <color _nil="1"/>
+   </outline>
+  </block>
+  <extendedProperties name="enable.area.alt" value="false"/>
+  <extendedProperties name="enable.drill.category" value="true"/>
+  <extendedProperties name="enable.drill.series" value="true"/>
+  <extendedProperties name="jschart.series.shadow" value="false"/>
+  <extendedProperties name="jschart.animation" value="false"/>
+  <sampleData>
+   <baseSampleData dataSetRepresentation="A, B, C"/>
+   <orthogonalSampleData dataSetRepresentation="5,4,12" seriesDefinitionIndex="0"/>
+  </sampleData>
+  <emptyMessage>
+   <caption value="This chart contains no data."/>
+   <background _body=",64,127,127,127"/>
+   <outline>
+    <color _body=",128,127,127,127"/>
+   </outline>
+  </emptyMessage>
+  <axes>
+   <title>
+    <background _nil="1"/>
+    <outline>
+     <color _nil="1"/>
+    </outline>
+   </title>
+   <associatedAxes primaryAxis="true">
+    <title>
+     <background _nil="1"/>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </title>
+    <seriesDefinitions>
+     <query definition=""/>
+     <seriesPalette>
+      <entries _body=",255,243,156,18"/>
+      <entries _body=",255,242,88,106"/>
+      <entries _body=",255,232,172,57"/>
+      <entries _body=",255,128,255,128"/>
+      <entries _body=",255,64,128,128"/>
+      <entries _body=",255,128,128,192"/>
+      <entries _body=",255,170,85,85"/>
+      <entries _body=",255,128,128,0"/>
+      <entries _body=",255,192,192,192"/>
+      <entries _body=",255,255,255,128"/>
+      <entries _body=",255,128,192,128"/>
+      <entries _body=",255,7,146,94"/>
+      <entries _body=",255,0,128,255"/>
+      <entries _body=",255,255,128,192"/>
+      <entries _body=",255,0,255,255"/>
+      <entries _body=",255,255,128,128"/>
+      <entries _body=",255,0,128,192"/>
+      <entries _body=",255,128,128,192"/>
+      <entries _body=",255,255,0,255"/>
+      <entries _body=",255,128,64,64"/>
+      <entries _body=",255,255,128,64"/>
+      <entries _body=",255,80,240,120"/>
+      <entries _body=",255,0,64,128"/>
+      <entries _body=",255,128,0,64"/>
+      <entries _body=",255,255,0,128"/>
+      <entries _body=",255,128,128,64"/>
+      <entries _body=",255,128,128,128"/>
+      <entries _body=",255,255,128,255"/>
+      <entries _body=",255,0,64,0"/>
+      <entries _body=",255,0,0,0"/>
+      <entries _body=",255,255,255,255"/>
+      <entries _body=",255,255,128,0"/>
+     </seriesPalette>
+     <series _type="BarSeries" seriesIdentifier="Series 1" stacked="false" riser="0">
+      <label>
+       <background _nil="1"/>
+       <outline>
+        <color _nil="1"/>
+       </outline>
+      </label>
+      <dataDefinition definition="row[&quot;frequencyByConcept&quot;]">
+       <grouping enabled="true"/>
+      </dataDefinition>
+      <triggers condition="6">
+       <action type="1">
+        <value _type="TooltipValue" text="" delay="200"/>
+       </action>
+      </triggers>
+      <curveFitting _nil="1"/>
+     </series>
+    </seriesDefinitions>
+    <lineAttributes>
+     <color _nil="1"/>
+    </lineAttributes>
+    <label>
+     <background _nil="1"/>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </label>
+    <majorGrid>
+     <lineAttributes>
+      <color _nil="1"/>
+     </lineAttributes>
+     <tickAttributes>
+      <color _nil="1"/>
+     </tickAttributes>
+    </majorGrid>
+    <minorGrid>
+     <lineAttributes>
+      <color _nil="1"/>
+     </lineAttributes>
+     <tickAttributes>
+      <color _nil="1"/>
+     </tickAttributes>
+    </minorGrid>
+    <scale step="5.0"/>
+    <origin>
+     <value _nil="1"/>
+    </origin>
+   </associatedAxes>
+   <seriesDefinitions>
+    <query definition=""/>
+    <seriesPalette>
+     <entries _body=",255,243,156,18"/>
+     <entries _body=",255,242,88,106"/>
+     <entries _body=",255,232,172,57"/>
+     <entries _body=",255,128,255,128"/>
+     <entries _body=",255,64,128,128"/>
+     <entries _body=",255,128,128,192"/>
+     <entries _body=",255,170,85,85"/>
+     <entries _body=",255,128,128,0"/>
+     <entries _body=",255,192,192,192"/>
+     <entries _body=",255,255,255,128"/>
+     <entries _body=",255,128,192,128"/>
+     <entries _body=",255,7,146,94"/>
+     <entries _body=",255,0,128,255"/>
+     <entries _body=",255,255,128,192"/>
+     <entries _body=",255,0,255,255"/>
+     <entries _body=",255,255,128,128"/>
+     <entries _body=",255,0,128,192"/>
+     <entries _body=",255,128,128,192"/>
+     <entries _body=",255,255,0,255"/>
+     <entries _body=",255,128,64,64"/>
+     <entries _body=",255,255,128,64"/>
+     <entries _body=",255,80,240,120"/>
+     <entries _body=",255,0,64,128"/>
+     <entries _body=",255,128,0,64"/>
+     <entries _body=",255,255,0,128"/>
+     <entries _body=",255,128,128,64"/>
+     <entries _body=",255,128,128,128"/>
+     <entries _body=",255,255,128,255"/>
+     <entries _body=",255,0,64,0"/>
+     <entries _body=",255,0,0,0"/>
+     <entries _body=",255,255,255,255"/>
+     <entries _body=",255,255,128,0"/>
+    </seriesPalette>
+    <series seriesIdentifier="">
+     <label>
+      <background _nil="1"/>
+      <outline>
+       <color _nil="1"/>
+      </outline>
+     </label>
+     <dataDefinition definition="row[&quot;concept&quot;]"/>
+     <curveFitting _nil="1"/>
+    </series>
+    <grouping enabled="true"/>
+   </seriesDefinitions>
+   <lineAttributes>
+    <color _nil="1"/>
+   </lineAttributes>
+   <label>
+    <background _nil="1"/>
+    <outline>
+     <color _nil="1"/>
+    </outline>
+   </label>
+   <majorGrid>
+    <lineAttributes>
+     <color _nil="1"/>
+    </lineAttributes>
+    <tickAttributes>
+     <color _nil="1"/>
+    </tickAttributes>
+   </majorGrid>
+   <minorGrid>
+    <lineAttributes>
+     <color _nil="1"/>
+    </lineAttributes>
+    <tickAttributes>
+     <color _nil="1"/>
+    </tickAttributes>
+   </minorGrid>
+   <origin>
+    <value _nil="1"/>
+   </origin>
+  </axes>
+  <rotation>
+   <angles/>
+  </rotation>
+ </ChartWithAxes>
+</ActuateChart>
+]]></xml-property>
+                        <property name="outputFormat">JS</property>
+                        <property name="inheritColumns">false</property>
+                        <property name="height">4in</property>
+                        <property name="width">7in</property>
+                        <property name="dataBindingRef">ConceptTable</property>
+                        <property name="theme">ThemesReportItems31.Chart-Modern</property>
+                    </extended-item>
+                </cell>
+                <cell id="520">
+                    <property name="borderBottomColor">#C0C0C0</property>
+                    <property name="borderBottomStyle">solid</property>
+                    <property name="borderBottomWidth">1px</property>
+                    <property name="borderLeftColor">#C0C0C0</property>
+                    <property name="borderLeftStyle">solid</property>
+                    <property name="borderLeftWidth">1px</property>
+                    <property name="borderRightColor">#C0C0C0</property>
+                    <property name="borderRightStyle">solid</property>
+                    <property name="borderRightWidth">1px</property>
+                    <property name="borderTopColor">#C0C0C0</property>
+                    <property name="borderTopStyle">solid</property>
+                    <property name="borderTopWidth">1px</property>
+                    <table name="CategoryTable" id="750">
+                        <list-property name="userProperties">
+                            <structure>
+                                <property name="name">__ac_group_collapse_level</property>
+                                <property name="type">string</property>
+                            </structure>
+                        </list-property>
+                        <list-property name="visibility">
+                            <structure>
+                                <property name="format">all</property>
+                                <expression name="valueExpr" type="javascript">true</expression>
+                            </structure>
+                        </list-property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">doc_id</property>
+                                <text-property name="displayName">doc_id</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["doc_id"]</expression>
+                                <property name="dataType">integer</property>
+                            </structure>
+                            <structure>
+                                <property name="name">category</property>
+                                <text-property name="displayName">category</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["category"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">frequencyByCategory</property>
+                                <property name="dataType">integer</property>
+                                <simple-property-list name="aggregateOn">
+                                    <value>NewTableGroup1</value>
+                                </simple-property-list>
+                                <property name="aggregateFunction">COUNT</property>
+                                <list-property name="arguments">
+                                    <structure>
+                                        <property name="name">Expression</property>
+                                        <expression name="value" type="javascript">row["doc_id"]</expression>
+                                    </structure>
+                                </list-property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                        </list-property>
+                        <property name="linkedDataModel">Categories</property>
+                        <list-property name="filter">
+                            <structure>
+                                <property name="operator">top-n</property>
+                                <expression name="expr" type="javascript">row["frequencyByCategory"]</expression>
+                                <simple-property-list name="value1">
+                                    <value type="javascript">20</value>
+                                </simple-property-list>
+                                <property name="updateAggregation">true</property>
+                            </structure>
+                        </list-property>
+                        <column id="764"/>
+                        <column id="765"/>
+                        <group id="766">
+                            <property name="groupName">NewTableGroup1</property>
+                            <expression name="keyExpr" type="javascript">row["category"]</expression>
+                            <structure name="toc">
+                                <expression name="expressionValue" type="javascript">row["category"]</expression>
+                            </structure>
+                            <property name="hideDetail">false</property>
+                            <list-property name="sort">
+                                <structure>
+                                    <expression name="key" type="javascript">row["frequencyByCategory"]</expression>
+                                    <property name="direction">asc</property>
+                                    <property name="strength">-1</property>
+                                </structure>
+                            </list-property>
+                            <header>
+                                <row id="767">
+                                    <cell id="768">
+                                        <data id="773">
+                                            <property name="resultSetColumn">category</property>
+                                        </data>
+                                    </cell>
+                                    <cell id="769">
+                                        <data id="774">
+                                            <property name="resultSetColumn">frequencyByCategory</property>
+                                        </data>
+                                    </cell>
+                                </row>
+                            </header>
+                        </group>
+                        <footer>
+                            <row id="761">
+                                <cell id="762"/>
+                                <cell id="763"/>
+                            </row>
+                        </footer>
+                    </table>
+                    <extended-item extensionName="Chart" id="776">
+                        <xml-property name="xmlRepresentation"><![CDATA[<ActuateChart version="2.6.1">
+ <ChartWithAxes version="2.6.1" type="Bar Chart" subType="Side-by-side" orientation="0">
+  <block>
+   <children _type="TitleBlock" visible="false">
+    <outline>
+     <color _nil="1"/>
+    </outline>
+    <label>
+     <background _nil="1"/>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </label>
+   </children>
+   <children _type="Plot">
+    <outline>
+     <color _nil="1"/>
+    </outline>
+    <clientArea>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </clientArea>
+   </children>
+   <children _type="Legend" visible="false">
+    <outline>
+     <color _nil="1"/>
+    </outline>
+    <clientArea>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </clientArea>
+    <separator>
+     <color _nil="1"/>
+    </separator>
+    <title>
+     <background _nil="1"/>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </title>
+   </children>
+   <bounds _body="0.0,0.0,372.0,186.0"/>
+   <outline>
+    <color _nil="1"/>
+   </outline>
+  </block>
+  <extendedProperties name="enable.area.alt" value="false"/>
+  <extendedProperties name="enable.drill.category" value="true"/>
+  <extendedProperties name="enable.drill.series" value="true"/>
+  <extendedProperties name="jschart.animation" value="false"/>
+  <extendedProperties name="jschart.series.shadow" value="false"/>
+  <sampleData>
+   <baseSampleData dataSetRepresentation="A, B, C"/>
+   <orthogonalSampleData dataSetRepresentation="5,4,12" seriesDefinitionIndex="0"/>
+  </sampleData>
+  <emptyMessage>
+   <caption value="This chart contains no data."/>
+   <background _body=",64,127,127,127"/>
+   <outline>
+    <color _body=",128,127,127,127"/>
+   </outline>
+  </emptyMessage>
+  <axes>
+   <title>
+    <background _nil="1"/>
+    <outline>
+     <color _nil="1"/>
+    </outline>
+   </title>
+   <associatedAxes primaryAxis="true">
+    <title>
+     <background _nil="1"/>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </title>
+    <seriesDefinitions>
+     <query definition=""/>
+     <seriesPalette>
+      <entries _body=",255,0,134,215"/>
+      <entries _body=",255,242,88,106"/>
+      <entries _body=",255,232,172,57"/>
+      <entries _body=",255,128,255,128"/>
+      <entries _body=",255,64,128,128"/>
+      <entries _body=",255,128,128,192"/>
+      <entries _body=",255,170,85,85"/>
+      <entries _body=",255,128,128,0"/>
+      <entries _body=",255,192,192,192"/>
+      <entries _body=",255,255,255,128"/>
+      <entries _body=",255,128,192,128"/>
+      <entries _body=",255,7,146,94"/>
+      <entries _body=",255,0,128,255"/>
+      <entries _body=",255,255,128,192"/>
+      <entries _body=",255,0,255,255"/>
+      <entries _body=",255,255,128,128"/>
+      <entries _body=",255,0,128,192"/>
+      <entries _body=",255,128,128,192"/>
+      <entries _body=",255,255,0,255"/>
+      <entries _body=",255,128,64,64"/>
+      <entries _body=",255,255,128,64"/>
+      <entries _body=",255,80,240,120"/>
+      <entries _body=",255,0,64,128"/>
+      <entries _body=",255,128,0,64"/>
+      <entries _body=",255,255,0,128"/>
+      <entries _body=",255,128,128,64"/>
+      <entries _body=",255,128,128,128"/>
+      <entries _body=",255,255,128,255"/>
+      <entries _body=",255,0,64,0"/>
+      <entries _body=",255,0,0,0"/>
+      <entries _body=",255,255,255,255"/>
+      <entries _body=",255,255,128,0"/>
+     </seriesPalette>
+     <series _type="BarSeries" seriesIdentifier="Series 1" stacked="false" riser="0">
+      <label>
+       <background _nil="1"/>
+       <outline>
+        <color _nil="1"/>
+       </outline>
+      </label>
+      <dataDefinition definition="row[&quot;frequencyByCategory&quot;]">
+       <grouping enabled="true" aggregateExpression="Count"/>
+      </dataDefinition>
+      <triggers condition="6">
+       <action type="1">
+        <value _type="TooltipValue" text="" delay="200"/>
+       </action>
+      </triggers>
+      <curveFitting _nil="1"/>
+     </series>
+    </seriesDefinitions>
+    <lineAttributes>
+     <color _nil="1"/>
+    </lineAttributes>
+    <label>
+     <background _nil="1"/>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </label>
+    <majorGrid>
+     <lineAttributes>
+      <color _nil="1"/>
+     </lineAttributes>
+     <tickAttributes>
+      <color _nil="1"/>
+     </tickAttributes>
+    </majorGrid>
+    <minorGrid>
+     <lineAttributes>
+      <color _nil="1"/>
+     </lineAttributes>
+     <tickAttributes>
+      <color _nil="1"/>
+     </tickAttributes>
+    </minorGrid>
+    <scale step="5.0"/>
+    <origin>
+     <value _nil="1"/>
+    </origin>
+   </associatedAxes>
+   <seriesDefinitions>
+    <query definition=""/>
+    <seriesPalette>
+     <entries _body=",255,0,134,215"/>
+     <entries _body=",255,242,88,106"/>
+     <entries _body=",255,232,172,57"/>
+     <entries _body=",255,128,255,128"/>
+     <entries _body=",255,64,128,128"/>
+     <entries _body=",255,128,128,192"/>
+     <entries _body=",255,170,85,85"/>
+     <entries _body=",255,128,128,0"/>
+     <entries _body=",255,192,192,192"/>
+     <entries _body=",255,255,255,128"/>
+     <entries _body=",255,128,192,128"/>
+     <entries _body=",255,7,146,94"/>
+     <entries _body=",255,0,128,255"/>
+     <entries _body=",255,255,128,192"/>
+     <entries _body=",255,0,255,255"/>
+     <entries _body=",255,255,128,128"/>
+     <entries _body=",255,0,128,192"/>
+     <entries _body=",255,128,128,192"/>
+     <entries _body=",255,255,0,255"/>
+     <entries _body=",255,128,64,64"/>
+     <entries _body=",255,255,128,64"/>
+     <entries _body=",255,80,240,120"/>
+     <entries _body=",255,0,64,128"/>
+     <entries _body=",255,128,0,64"/>
+     <entries _body=",255,255,0,128"/>
+     <entries _body=",255,128,128,64"/>
+     <entries _body=",255,128,128,128"/>
+     <entries _body=",255,255,128,255"/>
+     <entries _body=",255,0,64,0"/>
+     <entries _body=",255,0,0,0"/>
+     <entries _body=",255,255,255,255"/>
+     <entries _body=",255,255,128,0"/>
+    </seriesPalette>
+    <series seriesIdentifier="">
+     <label>
+      <background _nil="1"/>
+      <outline>
+       <color _nil="1"/>
+      </outline>
+     </label>
+     <dataDefinition definition="row[&quot;category&quot;]"/>
+     <curveFitting _nil="1"/>
+    </series>
+    <grouping enabled="true"/>
+   </seriesDefinitions>
+   <lineAttributes>
+    <color _nil="1"/>
+   </lineAttributes>
+   <label>
+    <background _nil="1"/>
+    <outline>
+     <color _nil="1"/>
+    </outline>
+   </label>
+   <majorGrid>
+    <lineAttributes>
+     <color _nil="1"/>
+    </lineAttributes>
+    <tickAttributes>
+     <color _nil="1"/>
+    </tickAttributes>
+   </majorGrid>
+   <minorGrid>
+    <lineAttributes>
+     <color _nil="1"/>
+    </lineAttributes>
+    <tickAttributes>
+     <color _nil="1"/>
+    </tickAttributes>
+   </minorGrid>
+   <origin>
+    <value _nil="1"/>
+   </origin>
+  </axes>
+  <rotation>
+   <angles/>
+  </rotation>
+ </ChartWithAxes>
+</ActuateChart>
+]]></xml-property>
+                        <property name="outputFormat">JS</property>
+                        <property name="inheritColumns">false</property>
+                        <property name="height">4in</property>
+                        <property name="width">8in</property>
+                        <property name="dataBindingRef">CategoryTable</property>
+                        <property name="theme">ThemesReportItems31.Chart-Clean Blue</property>
+                    </extended-item>
+                </cell>
+            </row>
+        </grid>
+        <grid id="530">
+            <property name="pageBreakBefore">always</property>
+            <column id="531"/>
+            <row id="532">
+                <cell id="533"/>
+            </row>
+            <row id="534">
+                <cell id="535">
+                    <property name="paddingLeft">24pt</property>
+                    <property name="paddingRight">24pt</property>
+                    <table id="538">
+                        <list-property name="userProperties">
+                            <structure>
+                                <property name="name">__ac_group_collapse_level</property>
+                                <property name="type">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="theme">ThemesReportItems31.Table-Modern</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">doc_id</property>
+                                <text-property name="displayName">doc_id</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["doc_id"]</expression>
+                                <property name="dataType">integer</property>
+                            </structure>
+                            <structure>
+                                <property name="name">orig_id</property>
+                                <text-property name="displayName">orig_id</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["orig_id"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">content</property>
+                                <text-property name="displayName">content</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["content"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">category</property>
+                                <text-property name="displayName">category</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["category"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="linkedDataModel">Categories</property>
+                        <column id="564">
+                            <property name="width">50%</property>
+                        </column>
+                        <column id="565">
+                            <property name="width">15%</property>
+                        </column>
+                        <column id="617">
+                            <property name="width">15%</property>
+                        </column>
+                        <column id="624">
+                            <property name="width">15%</property>
+                        </column>
+                        <header>
+                            <row id="539">
+                                <property name="fontFamily">"Calibri"</property>
+                                <property name="fontSize">14pt</property>
+                                <cell id="544">
+                                    <label id="545">
+                                        <text-property name="text">Content</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="546">
+                                    <label id="547">
+                                        <text-property name="text">Categories</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="614">
+                                    <label id="619">
+                                        <text-property name="text">Concepts</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="621">
+                                    <label id="625">
+                                        <text-property name="text">Sentiment</text-property>
+                                    </label>
+                                </cell>
+                            </row>
+                        </header>
+                        <group id="566">
+                            <property name="groupName">NewTableGroup1</property>
+                            <expression name="keyExpr" type="javascript">row["doc_id"]</expression>
+                            <structure name="toc">
+                                <expression name="expressionValue" type="javascript">row["doc_id"]</expression>
+                            </structure>
+                            <property name="hideDetail">false</property>
+                            <header>
+                                <row id="567">
+                                    <property name="fontFamily">"Calibri"</property>
+                                    <cell id="570">
+                                        <property name="paddingLeft">3pt</property>
+                                        <property name="paddingRight">3pt</property>
+                                        <grid id="596">
+                                            <column id="598"/>
+                                            <row id="602">
+                                                <cell id="604">
+                                                    <property name="paddingBottom">6pt</property>
+                                                    <data id="609">
+                                                        <property name="fontSize">12pt</property>
+                                                        <property name="color">#F39C12</property>
+                                                        <property name="textAlign">center</property>
+                                                        <property name="resultSetColumn">orig_id</property>
+                                                    </data>
+                                                </cell>
+                                            </row>
+                                            <row id="605">
+                                                <cell id="607">
+                                                    <data id="610">
+                                                        <property name="fontSize">11pt</property>
+                                                        <property name="resultSetColumn">content</property>
+                                                    </data>
+                                                </cell>
+                                            </row>
+                                        </grid>
+                                    </cell>
+                                    <cell id="571">
+                                        <property name="backgroundColor">#0086D7</property>
+                                        <property name="color">#FFFFFF</property>
+                                        <property name="paddingLeft">3pt</property>
+                                        <property name="paddingRight">3pt</property>
+                                        <list id="594">
+                                            <property name="fontSize">11pt</property>
+                                            <list-property name="boundDataColumns">
+                                                <structure>
+                                                    <property name="name">doc_id</property>
+                                                    <text-property name="displayName">doc_id</text-property>
+                                                    <expression name="expression" type="javascript">dataSetRow["doc_id"]</expression>
+                                                    <property name="dataType">integer</property>
+                                                </structure>
+                                                <structure>
+                                                    <property name="name">category</property>
+                                                    <text-property name="displayName">category</text-property>
+                                                    <expression name="expression" type="javascript">dataSetRow["category"]</expression>
+                                                    <property name="dataType">string</property>
+                                                </structure>
+                                            </list-property>
+                                            <property name="linkedDataModel">Categories</property>
+                                            <list-property name="filter">
+                                                <structure>
+                                                    <property name="operator">eq</property>
+                                                    <expression name="expr" type="javascript">row["doc_id"]</expression>
+                                                    <simple-property-list name="value1">
+                                                        <value type="javascript">row._outer["doc_id"]</value>
+                                                    </simple-property-list>
+                                                    <property name="updateAggregation">true</property>
+                                                </structure>
+                                            </list-property>
+                                            <detail>
+                                                <data id="595">
+                                                    <property name="paddingBottom">3pt</property>
+                                                    <property name="resultSetColumn">category</property>
+                                                </data>
+                                            </detail>
+                                        </list>
+                                    </cell>
+                                    <cell id="615">
+                                        <property name="backgroundColor">#F39C12</property>
+                                        <property name="color">#FFFFFF</property>
+                                        <property name="paddingLeft">3pt</property>
+                                        <property name="paddingRight">3pt</property>
+                                        <list id="618">
+                                            <property name="fontSize">11pt</property>
+                                            <list-property name="boundDataColumns">
+                                                <structure>
+                                                    <property name="name">doc_id</property>
+                                                    <text-property name="displayName">doc_id</text-property>
+                                                    <expression name="expression" type="javascript">dataSetRow["doc_id"]</expression>
+                                                    <property name="dataType">integer</property>
+                                                </structure>
+                                                <structure>
+                                                    <property name="name">concept</property>
+                                                    <text-property name="displayName">concept</text-property>
+                                                    <expression name="expression" type="javascript">dataSetRow["concept"]</expression>
+                                                    <property name="dataType">string</property>
+                                                </structure>
+                                            </list-property>
+                                            <property name="linkedDataModel">Concepts</property>
+                                            <list-property name="filter">
+                                                <structure>
+                                                    <property name="operator">eq</property>
+                                                    <expression name="expr" type="javascript">row["doc_id"]</expression>
+                                                    <simple-property-list name="value1">
+                                                        <value type="javascript">row._outer["doc_id"]</value>
+                                                    </simple-property-list>
+                                                    <property name="updateAggregation">true</property>
+                                                </structure>
+                                            </list-property>
+                                            <detail>
+                                                <data id="620">
+                                                    <property name="paddingBottom">3pt</property>
+                                                    <property name="resultSetColumn">concept</property>
+                                                </data>
+                                            </detail>
+                                        </list>
+                                    </cell>
+                                    <cell id="622">
+                                        <property name="backgroundColor">#F0F0F0</property>
+                                        <property name="paddingLeft">3pt</property>
+                                        <property name="paddingRight">3pt</property>
+                                        <list id="778">
+                                            <property name="fontSize">11pt</property>
+                                            <list-property name="boundDataColumns">
+                                                <structure>
+                                                    <property name="name">doc_id</property>
+                                                    <text-property name="displayName">doc_id</text-property>
+                                                    <expression name="expression" type="javascript">dataSetRow["doc_id"]</expression>
+                                                    <property name="dataType">integer</property>
+                                                </structure>
+                                                <structure>
+                                                    <property name="name">tone</property>
+                                                    <text-property name="displayName">tone</text-property>
+                                                    <expression name="expression" type="javascript">dataSetRow["tone"]</expression>
+                                                    <property name="dataType">string</property>
+                                                </structure>
+                                                <structure>
+                                                    <property name="name">subjectivity</property>
+                                                    <text-property name="displayName">subjectivity</text-property>
+                                                    <expression name="expression" type="javascript">dataSetRow["subjectivity"]</expression>
+                                                    <property name="dataType">string</property>
+                                                </structure>
+                                                <structure>
+                                                    <property name="name">sentiment</property>
+                                                    <expression name="expression" type="javascript">data["tone"] + " " + data["subjectivity"]</expression>
+                                                    <property name="dataType">string</property>
+                                                    <property name="allowExport">true</property>
+                                                </structure>
+                                            </list-property>
+                                            <property name="linkedDataModel">Document Sentiments</property>
+                                            <list-property name="filter">
+                                                <structure>
+                                                    <property name="operator">eq</property>
+                                                    <expression name="expr" type="javascript">row["doc_id"]</expression>
+                                                    <simple-property-list name="value1">
+                                                        <value type="javascript">row._outer["doc_id"]</value>
+                                                    </simple-property-list>
+                                                    <property name="updateAggregation">true</property>
+                                                </structure>
+                                            </list-property>
+                                            <detail>
+                                                <data id="779">
+                                                    <property name="fontWeight">bold</property>
+                                                    <list-property name="highlightRules">
+                                                        <structure>
+                                                            <property name="operator">eq</property>
+                                                            <property name="fontWeight">bold</property>
+                                                            <property name="color">#9B151E</property>
+                                                            <expression name="testExpr" type="javascript">row["tone"]</expression>
+                                                            <simple-property-list name="value1">
+                                                                <value type="javascript">"negative"</value>
+                                                            </simple-property-list>
+                                                        </structure>
+                                                        <structure>
+                                                            <property name="operator">eq</property>
+                                                            <property name="fontWeight">bold</property>
+                                                            <property name="color">#38C645</property>
+                                                            <expression name="testExpr" type="javascript">row["tone"]</expression>
+                                                            <simple-property-list name="value1">
+                                                                <value type="javascript">"positive"</value>
+                                                            </simple-property-list>
+                                                        </structure>
+                                                    </list-property>
+                                                    <property name="resultSetColumn">sentiment</property>
+                                                </data>
+                                            </detail>
+                                        </list>
+                                    </cell>
+                                </row>
+                            </header>
+                        </group>
+                        <footer>
+                            <row id="557">
+                                <cell id="560"/>
+                                <cell id="561"/>
+                                <cell id="616"/>
+                                <cell id="623"/>
+                            </row>
+                        </footer>
+                    </table>
+                </cell>
+            </row>
+        </grid>
+    </body>
+</report>

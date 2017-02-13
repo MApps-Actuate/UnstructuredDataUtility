@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:c="http://dev.nstein.com/common/1.3" xmlns:tns="http://dev.nstein.com/tme-server/5.2#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" elementFormDefault="qualified" version="1.0" targetNamespace="http://dev.nstein.com/tme-server/5.2#">
+  <xs:import namespace="http://dev.nstein.com/common/1.3" schemaLocation="common-1.3.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/02/22-rdf-syntax-ns#" schemaLocation="rdf.xsd"/>
+  <xs:element name="conceptExtractor" type="tns:ConceptExtractorMethod"/>
+  <xs:element name="config" type="tns:ServerConfigType"/>
+  <xs:element name="finder" type="tns:FinderMethod"/>
+  <xs:element name="request" type="tns:ServerRequestType"/>
+  <xs:complexType name="ServerConfigType">
+    <xs:all/>
+  </xs:complexType>
+  <xs:complexType name="ServerRequestTextType" mixed="true">
+    <xs:sequence>
+      <xs:any processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="parseType" type="rdf:RDFParseTypeEnum"/>
+  </xs:complexType>
+  <xs:complexType name="ServerRequestTextsType">
+    <xs:sequence>
+      <xs:element name="text" type="tns:ServerRequestTextType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="parseType" type="rdf:RDFParseTypeEnum" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="ServerRequestMethodsType">
+    <xs:sequence>
+      <xs:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="parseType" type="rdf:RDFParseTypeEnum" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="ServerRequestType">
+    <xs:sequence>
+      <xs:element name="texts" type="tns:ServerRequestTextsType" minOccurs="0"/>
+      <xs:element name="language" type="xs:string" minOccurs="0"/>
+      <xs:element name="methods" type="tns:ServerRequestMethodsType" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="ID" type="xs:string" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="ConceptExtractorMethod">
+    <xs:complexContent>
+      <xs:extension base="tns:ServerMethodType">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ServerMethodType" abstract="true">
+    <xs:sequence/>
+    <xs:attribute name="ID" type="xs:string" use="required"/>
+    <xs:attribute name="parseType" type="rdf:RDFParseTypeEnum" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="FinderMethod">
+    <xs:complexContent>
+      <xs:extension base="tns:ServerMethodType">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

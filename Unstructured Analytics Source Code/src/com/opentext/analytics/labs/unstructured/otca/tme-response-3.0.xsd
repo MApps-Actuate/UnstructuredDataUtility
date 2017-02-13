@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" version="1.0" jaxb:version="2.1">
+    <xs:element name="Nserver" type="Nserver"/>
+    <xs:complexType name="ConceptExtractedTerm">
+        <xs:sequence>
+            <xs:choice minOccurs="0">
+                <xs:element name="GenericForm" type="xs:string"/>
+                <xs:element name="Subterms" type="ConceptSubTerms">
+                    <xs:annotation>
+                        <xs:appinfo>
+                            <jaxb:property name="SubTerms"/>
+                        </xs:appinfo>
+                    </xs:annotation>
+                </xs:element>
+            </xs:choice>
+        </xs:sequence>
+        <xs:attribute name="Frequency" type="xs:int"/>
+        <xs:attribute name="Weight" type="xs:int"/>
+    </xs:complexType>
+    <xs:complexType name="ConceptSubTerms">
+        <xs:sequence>
+            <xs:element name="Subterm" type="ConceptSubTerm" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <jaxb:property name="SubTerm"/>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ConceptSubTerm">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="Position" type="xs:int" use="required"/>
+                <xs:attribute name="Length" type="xs:int" use="required"/>
+                <xs:attribute name="TextPart" type="xs:string"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="Category">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="Id" type="xs:string"/>
+                <xs:attribute name="Weight" type="xs:float"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="Nserver">
+        <xs:sequence>
+            <xs:element name="ID" type="xs:string" minOccurs="0"/>
+            <xs:element name="TextID" type="xs:string" minOccurs="0"/>
+            <xs:element name="ErrorID" type="ErrorCode" minOccurs="0"/>
+            <xs:element name="ErrorDescription" type="xs:string" minOccurs="0"/>
+            <xs:element name="Warnings" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Warning" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="Results" type="Results" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="Version" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="ErrorCode">
+        <xs:simpleContent>
+            <xs:extension base="xs:int">
+                <xs:attribute name="Type" type="ErrorType"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="Results">
+        <xs:sequence>
+            <xs:element name="Ping" type="Ping" minOccurs="0"/>
+            <xs:element name="GetSupportedEncodings" type="GetSupportedEncodings" minOccurs="0"/>
+            <xs:element name="languagedetector" type="LanguageDetector" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <jaxb:property name="LanguageDetector"/>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="nconceptextractor" type="ConceptExtractor" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <jaxb:property name="ConceptExtractor"/>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ncategorizer" type="Categorizer" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <jaxb:property name="Categorizer"/>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="nfinder" type="Finder" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <jaxb:property name="Finder"/>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="nsentiment" type="Sentiment" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <jaxb:property name="Sentiment"/>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="nlikethis" type="LikeThis" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <jaxb:property name="LikeThis"/>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="nsummarizer" type="Summarizer" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <jaxb:property name="Summarizer"/>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Ping">
+        <xs:sequence>
+            <xs:element name="Pong" type="Pong" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="Name" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="Pong">
+        <xs:sequence/>
+    </xs:complexType>
+    <xs:complexType name="GetSupportedEncodings">
+        <xs:sequence>
+            <xs:element name="Encodings" type="Encodings" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="Name" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="Encodings">
+        <xs:sequence>
+            <xs:element name="Encoding" type="Encoding" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Encoding">
+        <xs:sequence>
+            <xs:element name="Alias" type="EncodingAlias" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="Name" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="EncodingAlias">
+        <xs:sequence/>
+        <xs:attribute name="Name" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="LanguageDetector">
+        <xs:sequence>
+            <xs:element name="Paragraphs" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Paragraph" type="Paragraph" minOccurs="0" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="Languages" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Language" type="Language" minOccurs="0" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="Name" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="Paragraph">
+        <xs:sequence>
+            <xs:element name="BeginIndex" type="xs:int"/>
+            <xs:element name="EndIndex" type="xs:int"/>
+            <xs:element name="Text" type="xs:string" minOccurs="0"/>
+            <xs:element name="Languages" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Language" type="Language" minOccurs="0" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Language">
+        <xs:sequence>
+            <xs:element name="Id" type="xs:string" minOccurs="0"/>
+            <xs:element name="ConfidenceScore" type="xs:float"/>
+            <xs:element name="DistributionScore" type="xs:int" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ConceptExtractor">
+        <xs:sequence>
+            <xs:element name="ComplexConcepts" type="Concepts" minOccurs="0"/>
+            <xs:element name="SimpleConcepts" type="Concepts" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="Name" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="Concepts">
+        <xs:sequence>
+            <xs:choice minOccurs="0">
+                <xs:element name="Concept" type="Concept" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="ExtractedTerm" type="ConceptExtractedTerm" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Concept">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="Frequency" type="xs:int"/>
+                <xs:attribute name="Relevancy" type="xs:int"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="Categorizer">
+        <xs:sequence>
+            <xs:element name="KnowledgeBase" type="KnowledgeBase" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="Name" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="Categories">
+        <xs:sequence>
+            <xs:element name="Category" type="Category" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RejectedCategories">
+        <xs:sequence>
+            <xs:element name="RejectedCategory" type="Category" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="KnowledgeBase">
+        <xs:sequence>
+            <xs:element name="KBid" type="xs:string" minOccurs="0"/>
+            <xs:element name="RelevancyScore" type="xs:int" minOccurs="0"/>
+            <xs:element name="Categories" type="Categories" minOccurs="0"/>
+            <xs:element name="RejectedCategories" type="RejectedCategories" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Finder">
+        <xs:sequence>
+            <xs:choice minOccurs="0">
+                <xs:element name="nfExtract" type="Extract">
+                    <xs:annotation>
+                        <xs:appinfo>
+                            <jaxb:property name="Extract"/>
+                        </xs:appinfo>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="nfFullTextSearch" type="FullTextSearch">
+                    <xs:annotation>
+                        <xs:appinfo>
+                            <jaxb:property name="FullTextSearch"/>
+                        </xs:appinfo>
+                    </xs:annotation>
+                </xs:element>
+            </xs:choice>
+        </xs:sequence>
+        <xs:attribute name="Name" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="Extract">
+        <xs:sequence>
+            <xs:element name="ExtractedTerm" type="ExtractedTerm" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ExtractedTerm">
+        <xs:sequence>
+            <xs:element name="nfinderNormalized" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <jaxb:property name="FinderNormalized"/>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ClientNormalized" type="xs:string" minOccurs="0"/>
+            <xs:element name="Id" type="xs:string" minOccurs="0"/>
+            <xs:element name="MainTerm" type="MainTerm" minOccurs="0"/>
+            <xs:element name="Subterms" type="SubTerms" minOccurs="0">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <jaxb:property name="SubTerms"/>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Hierarchy" type="Hierarchy" minOccurs="0"/>
+            <xs:element name="Homonyms" type="Homonyms" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="CartridgeID" type="xs:string"/>
+        <xs:attribute name="ConfidenceScore" type="xs:float"/>
+        <xs:attribute name="RelevancyScore" type="xs:float"/>
+        <xs:attribute name="Frequency" type="xs:int"/>
+        <xs:attribute name="Subjectivity" type="xs:string"/>
+        <xs:attribute name="SubjectivityConfidenceScore" type="xs:float"/>
+        <xs:attribute name="SubjectivityScore" type="xs:float"/>
+        <xs:attribute name="SubjectivityDistribution" type="xs:float"/>
+        <xs:attribute name="Tone" type="xs:string"/>
+        <xs:attribute name="ToneConfidenceScore" type="xs:float"/>
+        <xs:attribute name="PositiveToneScore" type="xs:float"/>
+        <xs:attribute name="PositiveToneDistribution" type="xs:float"/>
+        <xs:attribute name="NegativeToneScore" type="xs:float"/>
+        <xs:attribute name="NegativeToneDistribution" type="xs:float"/>
+    </xs:complexType>
+    <xs:complexType name="MainTerm">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="language" type="xs:string"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="SubTerms">
+        <xs:sequence>
+            <xs:element name="Subterm" type="SubTerm" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <jaxb:property name="SubTerm"/>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="SubTerm">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="Id" type="xs:string"/>
+                <xs:attribute name="Position" type="xs:int" use="required"/>
+                <xs:attribute name="Length" type="xs:int" use="required"/>
+                <xs:attribute name="Candidate" type="xs:int"/>
+                <xs:attribute name="Subjectivity" type="xs:string"/>
+                <xs:attribute name="SubjectivityConfidenceScore" type="xs:float"/>
+                <xs:attribute name="SubjectivityScore" type="xs:float"/>
+                <xs:attribute name="Tone" type="xs:string"/>
+                <xs:attribute name="ToneConfidenceScore" type="xs:float"/>
+                <xs:attribute name="PositiveToneScore" type="xs:float"/>
+                <xs:attribute name="NegativeToneScore" type="xs:float"/>
+                <xs:attribute name="SentenceBeginIndex" type="xs:int"/>
+                <xs:attribute name="SentenceEndIndex" type="xs:int"/>
+                <xs:attribute name="Sentence" type="xs:string"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="Hierarchy">
+        <xs:sequence>
+            <xs:element name="Base" type="Base" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Homonyms">
+        <xs:sequence>
+            <xs:element name="Homonym" type="Homonym" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Base">
+        <xs:sequence>
+            <xs:element name="Attributes" type="Attributes" minOccurs="0"/>
+            <xs:element name="Parents" type="Parents" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Attributes">
+        <xs:sequence>
+            <xs:element name="Attribute" type="Attribute" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Parents">
+        <xs:sequence>
+            <xs:element name="Parent" type="Parent" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Attribute">
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string" minOccurs="0"/>
+            <xs:element name="Value" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Parent">
+        <xs:sequence>
+            <xs:element name="Id" type="xs:string" minOccurs="0"/>
+            <xs:element name="Term" type="xs:string" minOccurs="0"/>
+            <xs:element name="Attributes" type="Attributes" minOccurs="0"/>
+            <xs:element name="Parents" type="Parents" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Homonym">
+        <xs:sequence>
+            <xs:element name="Id" type="xs:string" minOccurs="0"/>
+            <xs:element name="Term" type="xs:string" minOccurs="0"/>
+            <xs:element name="Attributes" type="Attributes" minOccurs="0"/>
+            <xs:element name="Parents" type="Parents" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="FullTextSearch">
+        <xs:sequence>
+            <xs:element name="ExtractedTerm" type="ExtractedTerm" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Sentiment">
+        <xs:sequence>
+            <xs:element name="SentenceLevel" type="SentenceLevel" minOccurs="0" />
+            <xs:element name="DocumentLevel" type="DocumentLevel" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="Name" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="SentenceLevel">
+        <xs:sequence>
+            <xs:element name="Sentence" type="Sentence" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Sentence">
+        <xs:sequence>
+            <xs:element name="Text" type="Text" minOccurs="0"/>
+            <xs:element name="Subjectivity" type="Subjectivity" minOccurs="0"/>
+            <xs:element name="PositiveTone" type="Tone" minOccurs="0"/>
+            <xs:element name="NegativeTone" type="Tone" minOccurs="0"/>
+            <xs:element name="Tone" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Text">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="begin" type="xs:int" use="required"/>
+                <xs:attribute name="end" type="xs:int" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="DocumentLevel">
+        <xs:sequence>
+            <xs:element name="Subjectivity" type="Subjectivity" minOccurs="0"/>
+            <xs:element name="PositiveTone" type="Tone" minOccurs="0"/>
+            <xs:element name="NegativeTone" type="Tone" minOccurs="0"/>
+            <xs:element name="Tone" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Subjectivity">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="score" type="xs:float" use="required"/>
+                <xs:attribute name="distribution" type="xs:float" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="Tone">
+        <xs:sequence/>
+        <xs:attribute name="score" type="xs:float" use="required"/>
+        <xs:attribute name="distribution" type="xs:float" use="optional"/>
+    </xs:complexType>
+    <xs:complexType name="LikeThis">
+        <xs:sequence>
+            <xs:choice minOccurs="0">
+                <xs:element name="IsTextIndexed" type="LikeThisContains"/>
+                <xs:element name="Compare" type="LikeThisCompare"/>
+                <xs:element name="GetAllIds" type="LikeThisList"/>
+                <xs:element name="GetStats" type="LikeThisSize"/>
+            </xs:choice>
+        </xs:sequence>
+        <xs:attribute name="Name" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="LikeThisContains">
+        <xs:sequence>
+            <xs:element name="IsTextIndexed" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="LikeThisCompare">
+        <xs:sequence>
+            <xs:element name="Text" type="LikeThisText" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="LikeThisText">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="Weight" type="xs:float" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="LikeThisList">
+        <xs:sequence>
+            <xs:element name="Id" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="LikeThisSize">
+        <xs:sequence>
+            <xs:element name="NbDocuments" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Summarizer">
+        <xs:sequence>
+            <xs:element name="Summary" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="Name" type="xs:string"/>
+    </xs:complexType>
+    <xs:simpleType name="ErrorType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Status"/>
+            <xs:enumeration value="Error"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://dev.nstein.com/tme-server-core/5.2" elementFormDefault="qualified" version="1.0" targetNamespace="http://dev.nstein.com/tme-server-core/5.2">
+  <xs:import namespace="http://dev.nstein.com/common/1.3" schemaLocation="common-1.3.xsd"/>
+  <xs:element name="config" type="tns:ServerConfigType"/>
+  <xs:complexType name="ServerConfigType">
+    <xs:sequence>
+      <xs:element name="source" type="xs:string" minOccurs="0"/>
+      <xs:element name="licenseFile" type="xs:string"/>
+      <xs:element name="rejectionLength" type="xs:int"/>
+      <xs:element name="truncationLength" type="xs:int"/>
+      <xs:element name="partTruncationLength" type="xs:int"/>
+      <xs:element name="requestTimeout" type="xs:long"/>
+      <xs:element name="cacheMaximumSize" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

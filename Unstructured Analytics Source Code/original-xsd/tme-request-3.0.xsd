@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0">
+  <xs:element name="Nserver" type="ServerRequestType"/>
+  <xs:complexType name="ServerRequestType">
+    <xs:all>
+      <xs:element name="ID" type="xs:string" minOccurs="0"/>
+      <xs:element name="LanguageID" type="xs:string" minOccurs="0"/>
+      <xs:element name="Methods" type="ServerRequestMethodsType" minOccurs="0"/>
+      <xs:element name="Priority" type="xs:string" minOccurs="0"/>
+      <xs:element name="RequestMode" type="xs:string" minOccurs="0"/>
+      <xs:element name="ResultEncoding" type="xs:string" minOccurs="0"/>
+      <xs:element name="NSTEIN_Text" type="ServerRequestTextValueType" minOccurs="0"/>
+      <xs:element name="TextID" type="xs:string" minOccurs="0"/>
+      <xs:element name="Texts" type="ServerRequestTextsType" minOccurs="0"/>
+    </xs:all>
+    <xs:attribute name="Version" type="xs:string"/>
+  </xs:complexType>
+  <xs:complexType name="ServerRequestMethodsType">
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Ping" type="ServerResponsePingMethodType"/>
+        <xs:element name="GetSupportedEncodings" type="ServerResponseGetSupportedEncodingsMethodType"/>
+        <xs:element name="languagedetector" type="ServerResponseLanguageDetectorMethodType"/>
+        <xs:element name="nconceptextractor" type="ServerRequestConceptExtractorMethodType"/>
+        <xs:element name="ncategorizer" type="ServerRequestCategorizerMethodType"/>
+        <xs:element name="nfinder" type="ServerRequestEntityExtractorMethodType"/>
+        <xs:element name="nsentiment" type="ServerRequestEntitySentimentMethodType"/>
+        <xs:element name="nlikethis" type="ServerRequestEntitySimilarityMethodType"/>
+        <xs:element name="nsummarizer" type="ServerRequestEntitySummarizerMethodType"/>
+      </xs:choice>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="LanguageDetector" type="ServerResponseLanguageDetectorMethodType"/>
+        <xs:element name="NConceptExtractor" type="ServerRequestConceptExtractorMethodType"/>
+        <xs:element name="NCategorizer" type="ServerRequestCategorizerMethodType"/>
+        <xs:element name="NFinder" type="ServerRequestEntityExtractorMethodType"/>
+        <xs:element name="NSentiment" type="ServerRequestEntitySentimentMethodType"/>
+        <xs:element name="NLikeThis" type="ServerRequestEntitySimilarityMethodType"/>
+        <xs:element name="NSummarizer" type="ServerRequestEntitySummarizerMethodType"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ServerResponsePingMethodType">
+    <xs:sequence/>
+    <xs:attribute name="Name" type="xs:string"/>
+  </xs:complexType>
+  <xs:complexType name="ServerResponseGetSupportedEncodingsMethodType">
+    <xs:sequence/>
+    <xs:attribute name="Name" type="xs:string"/>
+  </xs:complexType>
+  <xs:complexType name="ServerResponseLanguageDetectorMethodType">
+    <xs:sequence>
+      <xs:element name="Mode" type="ServerResponseLanguageDetectorMethodModeEnum" minOccurs="0"/>
+      <xs:element name="OutputParagraphs" type="xs:boolean" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="Name" type="xs:string"/>
+  </xs:complexType>
+  <xs:complexType name="ServerRequestConceptExtractorMethodType">
+    <xs:all>
+      <xs:element name="Mode" type="ServerRequestConceptExtractorMethodModeEnum" minOccurs="0"/>
+      <xs:element name="ComplexConcepts" type="ServerRequestConceptExtractorMethodComplexConceptsType" minOccurs="0"/>
+      <xs:element name="SimpleConcepts" type="ServerRequestConceptExtractorMethodSimpleConceptsType" minOccurs="0"/>
+      <xs:element name="ExcludeEntities" type="ServerRequestConceptExtractorMethodExcludeEntitiesType" minOccurs="0"/>
+      <xs:element name="ResultLayout" type="ServerRequestConceptExtractorMethodResultLayoutEnum" minOccurs="0"/>
+    </xs:all>
+    <xs:attribute name="Name" type="xs:string"/>
+  </xs:complexType>
+  <xs:complexType name="ServerRequestConceptExtractorMethodComplexConceptsType">
+    <xs:all>
+      <xs:element name="RelevancyLevel" type="ServerRequestConceptExtractorMethodComplexConceptsRelevancyLevelEnum" minOccurs="0"/>
+      <xs:element name="NumberOfComplexConcepts" type="xs:int" minOccurs="0"/>
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="ServerRequestConceptExtractorMethodSimpleConceptsType">
+    <xs:sequence>
+      <xs:element name="NumberOfSimpleConcepts" type="xs:int" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ServerRequestConceptExtractorMethodExcludeEntitiesType">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="ServerRequestCategorizerMethodType">
+    <xs:sequence>
+      <xs:element name="KBid" type="xs:string" minOccurs="0"/>
+      <xs:element name="NumberOfCategories" type="xs:int" minOccurs="0"/>
+      <xs:element name="RejectedCategories" type="ServerRequestCategorizerMethodRejectedCategoriesType" minOccurs="0"/>
+      <xs:element name="KnowledgeBase" type="ServerRequestCategorizerMethodKnowledgeBaseType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="Name" type="xs:string"/>
+  </xs:complexType>
+  <xs:complexType name="ServerRequestCategorizerMethodRejectedCategoriesType">
+    <xs:sequence>
+      <xs:element name="NumberOfRejectedCategories" type="xs:int" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ServerRequestCategorizerMethodKnowledgeBaseType">
+    <xs:all>
+      <xs:element name="KBid" type="xs:string"/>
+      <xs:element name="NumberOfCategories" type="xs:int" minOccurs="0"/>
+      <xs:element name="RejectedCategories" type="ServerRequestCategorizerMethodRejectedCategoriesType" minOccurs="0"/>
+      <xs:element name="OutputAttributes" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="OutputParents" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="OutputParentsAttributes" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="LegacyResult" type="xs:boolean" minOccurs="0"/>
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="ServerRequestEntityExtractorMethodType">
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="nfExtract" type="ServerRequestEntityExtractorMethodExtractMethodType"/>
+        <xs:element name="nfFullTextSearch" type="ServerRequestEntityExtractorMethodFullTextSearchMethodType"/>
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="Name" type="xs:string"/>
+  </xs:complexType>
+  <xs:complexType name="ServerRequestEntityExtractorMethodExtractMethodType">
+    <xs:sequence>
+      <xs:element name="Cartridges" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Cartridge" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="OutputSubterms" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="OutputAttributes" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="OutputParents" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="OutputParentsAttributes" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="OutputHomonyms" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="OutputHomonymsAttributes" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="OutputHomonymsParents" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="Hierarchy" type="ServerRequestEntityExtractorMethodHierarchyType" minOccurs="0"/>
+      <xs:choice minOccurs="0">
+        <xs:element name="nsentiment" type="ServerRequestEntityExtractorMethodSentimentType"/>
+        <xs:element name="NSentiment" type="ServerRequestEntityExtractorMethodSentimentType"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ServerRequestEntityExtractorMethodHierarchyType">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="ServerRequestEntityExtractorMethodSentimentType">
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ServerRequestEntityExtractorMethodFullTextSearchMethodType">
+    <xs:sequence>
+      <xs:element name="Cartridges" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Cartridge" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="OutputSubterms" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="OutputAttributes" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="OutputParents" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="OutputParentsAttributes" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="OutputHomonyms" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="OutputHomonymsAttributes" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="OutputHomonymsParents" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="Hierarchy" type="ServerRequestEntityExtractorMethodHierarchyType" minOccurs="0"/>
+      <xs:choice minOccurs="0">
+        <xs:element name="nsentiment" type="ServerRequestEntityExtractorMethodSentimentType"/>
+        <xs:element name="NSentiment" type="ServerRequestEntityExtractorMethodSentimentType"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ServerRequestEntitySentimentMethodType">
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="Name" type="xs:string"/>
+  </xs:complexType>
+  <xs:complexType name="ServerRequestEntitySimilarityMethodType">
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Index" type="ServerRequestEntitySimilarityMethodUpdateMethodType"/>
+        <xs:element name="IsTextIndexed" type="ServerRequestEntitySimilarityMethodContainsMethodType"/>
+        <xs:element name="Compare" type="ServerRequestEntitySimilarityMethodCompareMethodType"/>
+        <xs:element name="Delete" type="ServerRequestEntitySimilarityMethodRemoveMethodType"/>
+        <xs:element name="Optimize" type="ServerRequestEntitySimilarityMethodOptimizeMethodType"/>
+        <xs:element name="GetAllIds" type="ServerRequestEntitySimilarityMethodListMethodType"/>
+        <xs:element name="GetStats" type="ServerRequestEntitySimilarityMethodSizeMethodType"/>
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="Name" type="xs:string"/>
+  </xs:complexType>
+  <xs:complexType name="ServerRequestEntitySimilarityMethodUpdateMethodType">
+    <xs:sequence>
+      <xs:element name="KBid" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ServerRequestEntitySimilarityMethodContainsMethodType">
+    <xs:sequence>
+      <xs:element name="KBid" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ServerRequestEntitySimilarityMethodCompareMethodType">
+    <xs:all>
+      <xs:element name="KBid" type="xs:string"/>
+      <xs:element name="NumberOfMatchedFiles" type="xs:int" minOccurs="0"/>
+      <xs:element name="EnableFastSearch" type="ServerRequestEntitySimilarityMethodCompareMethodFastSearchType" minOccurs="0"/>
+      <xs:element name="NoIndexing" type="ServerRequestEntitySimilarityMethodCompareMethodNoIndexingType" minOccurs="0"/>
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="ServerRequestEntitySimilarityMethodCompareMethodFastSearchType">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="ServerRequestEntitySimilarityMethodCompareMethodNoIndexingType">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="ServerRequestEntitySimilarityMethodRemoveMethodType">
+    <xs:sequence>
+      <xs:element name="KBid" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ServerRequestEntitySimilarityMethodOptimizeMethodType">
+    <xs:sequence>
+      <xs:element name="KBid" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ServerRequestEntitySimilarityMethodListMethodType">
+    <xs:sequence>
+      <xs:element name="KBid" type="xs:string"/>
+      <xs:element name="Offset" type="xs:int" minOccurs="0"/>
+      <xs:element name="Size" type="xs:int" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ServerRequestEntitySimilarityMethodSizeMethodType">
+    <xs:sequence>
+      <xs:element name="KBid" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ServerRequestEntitySummarizerMethodType">
+    <xs:all>
+      <xs:element name="Name" type="xs:string" minOccurs="0"/>
+      <xs:element name="KBid" type="xs:string"/>
+      <xs:element name="UseCategories" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Category" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="NbSentences" type="xs:int" minOccurs="0"/>
+      <xs:element name="Percentage" type="xs:int" minOccurs="0"/>
+      <xs:element name="MultipleTexts" type="xs:boolean" minOccurs="0"/>
+    </xs:all>
+    <xs:attribute name="Name" type="xs:string"/>
+  </xs:complexType>
+  <xs:complexType name="ServerRequestTextValueType" mixed="true">
+    <xs:sequence>
+      <xs:any processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ServerRequestTextsType">
+    <xs:sequence>
+      <xs:element name="Text" type="ServerRequestTextType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ServerRequestTextType">
+    <xs:all>
+      <xs:element name="TextID" type="xs:string" minOccurs="0"/>
+      <xs:element name="LanguageID" type="xs:string" minOccurs="0"/>
+      <xs:element name="NSTEIN_Text" type="ServerRequestTextValueType" minOccurs="0"/>
+    </xs:all>
+  </xs:complexType>
+  <xs:simpleType name="ServerResponseLanguageDetectorMethodModeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="text"/>
+      <xs:enumeration value="paragraph"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ServerRequestConceptExtractorMethodModeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NCONCEPT"/>
+      <xs:enumeration value="NFINDER"/>
+      <xs:enumeration value="NCATEGORIZER"/>
+      <xs:enumeration value="NSUMMARIZER"/>
+      <xs:enumeration value="FAST"/>
+      <xs:enumeration value="PHOTOCAPTION"/>
+      <xs:enumeration value="NLIKETHIS"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ServerRequestConceptExtractorMethodComplexConceptsRelevancyLevelEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="FIRST"/>
+      <xs:enumeration value="SECOND"/>
+      <xs:enumeration value="THIRD"/>
+      <xs:enumeration value="ALL"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ServerRequestConceptExtractorMethodResultLayoutEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NCONCEPTEXTRACTOR"/>
+      <xs:enumeration value="NFINDER"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
