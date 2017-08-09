@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
-    <property name="createdBy">Eclipse BIRT Designer Version 4.6.0.v201610042049</property>
+    <property name="createdBy">Eclipse BIRT Designer Version 4.6.0.v201603302314</property>
     <property name="units">in</property>
     <property name="iconFile">/templates/blank_report.gif</property>
     <property name="layoutPreference">auto layout</property>
@@ -15,9 +15,200 @@
     <data-sources>
         <data-mart-data-source name="Data Source" id="4">
             <property name="datamartURL">Data Objects/OTCA</property>
-            <property name="accessType">transient</property>
+            <property name="accessType">latest</property>
         </data-mart-data-source>
     </data-sources>
+    <data-sets>
+        <data-mart-data-set name="Documents" id="878">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">doc_id</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">doc_id</text-property>
+                    <text-property name="heading">doc_id</text-property>
+                    <property name="horizontalAlign">right</property>
+                    <structure name="action">
+                        <property name="targetWindow">_blank</property>
+                        <property name="linkType">drill-through</property>
+                        <property name="targetFileType">report-design</property>
+                        <property name="reportName">/Report Designs/DocContent.rptdesign</property>
+                        <list-property name="paramBindings">
+                            <structure>
+                                <property name="paramName">DocID</property>
+                                <simple-property-list name="expression">
+                                    <value type="javascript">row["doc_id"]</value>
+                                </simple-property-list>
+                            </structure>
+                        </list-property>
+                    </structure>
+                    <property name="indexColumn">false</property>
+                    <property name="compressed">false</property>
+                </structure>
+                <structure>
+                    <property name="columnName">ds_id</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">ds_id</text-property>
+                    <text-property name="heading">ds_id</text-property>
+                    <property name="indexColumn">false</property>
+                    <property name="compressed">false</property>
+                </structure>
+                <structure>
+                    <property name="columnName">orig_id</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">orig_id</text-property>
+                    <text-property name="heading">orig_id</text-property>
+                    <property name="indexColumn">false</property>
+                    <property name="compressed">false</property>
+                </structure>
+                <structure>
+                    <property name="columnName">content</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">content</text-property>
+                    <text-property name="heading">content</text-property>
+                    <property name="indexColumn">false</property>
+                    <property name="compressed">false</property>
+                </structure>
+                <structure>
+                    <property name="columnName">length</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">length</text-property>
+                    <text-property name="heading">length</text-property>
+                    <property name="indexColumn">false</property>
+                    <property name="compressed">false</property>
+                </structure>
+                <structure>
+                    <property name="columnName">words</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">words</text-property>
+                    <text-property name="heading">words</text-property>
+                    <property name="indexColumn">false</property>
+                    <property name="compressed">false</property>
+                </structure>
+                <structure>
+                    <property name="columnName">doc_date</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">doc_date</text-property>
+                    <text-property name="heading">doc_date</text-property>
+                    <property name="indexColumn">false</property>
+                    <property name="compressed">false</property>
+                </structure>
+                <structure>
+                    <property name="columnName">last_processed</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">last_processed</text-property>
+                    <text-property name="heading">last_processed</text-property>
+                    <property name="indexColumn">false</property>
+                    <property name="compressed">false</property>
+                </structure>
+                <structure>
+                    <property name="columnName">last_updated</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">last_updated</text-property>
+                    <text-property name="heading">last_updated</text-property>
+                    <property name="indexColumn">false</property>
+                    <property name="compressed">false</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">doc_id</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">ds_id</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">orig_id</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">content</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">length</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">words</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">doc_date</property>
+                        <property name="dataType">date-time</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">last_processed</property>
+                        <property name="dataType">date-time</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">last_updated</property>
+                        <property name="dataType">date-time</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">Data Source</property>
+            <property name="dataObject">Documents</property>
+            <list-property name="selectedColumns">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">doc_id</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">ds_id</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">orig_id</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">content</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">length</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">words</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">doc_date</property>
+                    <property name="dataType">date-time</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">last_processed</property>
+                    <property name="dataType">date-time</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">last_updated</property>
+                    <property name="dataType">date-time</property>
+                </structure>
+            </list-property>
+        </data-mart-data-set>
+    </data-sets>
     <property name="linkedDataModels">
         <data-mart-linked-data-model name="Document Sentiments" id="5">
             <property name="dataSource">Data Source</property>
@@ -63,18 +254,13 @@
                         <row id="841">
                             <cell id="842">
                                 <table id="847">
+                                    <property name="dataSet">Documents</property>
                                     <list-property name="boundDataColumns">
                                         <structure>
                                             <property name="name">doc_id</property>
                                             <text-property name="displayName">doc_id</text-property>
                                             <expression name="expression" type="javascript">dataSetRow["doc_id"]</expression>
                                             <property name="dataType">integer</property>
-                                        </structure>
-                                        <structure>
-                                            <property name="name">category</property>
-                                            <text-property name="displayName">category</text-property>
-                                            <expression name="expression" type="javascript">dataSetRow["category"]</expression>
-                                            <property name="dataType">string</property>
                                         </structure>
                                         <structure>
                                             <property name="name">Aggregation</property>
@@ -89,7 +275,6 @@
                                             <property name="allowExport">true</property>
                                         </structure>
                                     </list-property>
-                                    <property name="linkedDataModel">Categories</property>
                                     <column id="852"/>
                                     <header>
                                         <row id="848">

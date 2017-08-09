@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.6.0.v201603302314</property>
+    <html-property name="description">WizardTemplateChoicePage.message.BlankAuto</html-property>
+    <property name="units">in</property>
+    <property name="theme">ThemesReportItems31.Modern</property>
+    <text-property name="displayName">WizardTemplateChoicePage.title.BlankAuto</text-property>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="layoutPreference">auto layout</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <list-property name="libraries">
+        <structure>
+            <property name="fileName">/ThemesReportItems31.rptlibrary</property>
+            <property name="namespace">ThemesReportItems31</property>
+        </structure>
+    </list-property>
+    <method name="onContentUpdate"><![CDATA[// Get the Viewer's current UI Options
+var uiOptions = this.getViewer().getUIOptions();
+
+// Remove ability for user to change interactivity options
+uiOptions.enableEditReport(false);
+
+// Set the modified UI Options back into the Viewer
+this.getViewer().setUIOptions(uiOptions);
+
+// If Interactivity is not enabled, enable it
+if (!this.getViewer().isInteractive())
+	this.getViewer().enableIV();]]></method>
+    <parameters>
+        <scalar-parameter name="DocID" id="162">
+            <text-property name="promptText">Doc ID</text-property>
+            <property name="valueType">static</property>
+            <property name="dataType">integer</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+    <data-sources>
+        <data-mart-data-source name="Data Source" id="7">
+            <property name="datamartURL">Data Objects/OTCA</property>
+            <property name="accessType">latest</property>
+        </data-mart-data-source>
+    </data-sources>
+    <property name="linkedDataModels">
+        <data-mart-linked-data-model name="Document Sentiments" id="8">
+            <property name="dataSource">Data Source</property>
+            <property name="dataObject">Document Sentiments</property>
+        </data-mart-linked-data-model>
+    </property>
+    <styles>
+        <style name="report" id="4">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">10pt</property>
+        </style>
+        <style name="crosstab-cell" id="5">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+        <style name="crosstab" id="6">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <property name="orientation">auto</property>
+            <page-footer>
+                <text id="3">
+                    <property name="contentType">html</property>
+                    <text-property name="content"><![CDATA[<value-of>new Date()</value-of>]]></text-property>
+                </text>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <table id="104">
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">doc_id</property>
+                    <text-property name="displayName">doc_id</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["doc_id"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">ds_id</property>
+                    <text-property name="displayName">ds_id</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["ds_id"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">orig_id</property>
+                    <text-property name="displayName">orig_id</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["orig_id"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">content</property>
+                    <text-property name="displayName">content</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["content"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">length</property>
+                    <text-property name="displayName">length</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["length"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">words</property>
+                    <text-property name="displayName">words</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["words"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">doc_date</property>
+                    <text-property name="displayName">doc_date</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["doc_date"]</expression>
+                    <property name="dataType">date-time</property>
+                </structure>
+                <structure>
+                    <property name="name">last_processed</property>
+                    <text-property name="displayName">last_processed</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["last_processed"]</expression>
+                    <property name="dataType">date-time</property>
+                </structure>
+                <structure>
+                    <property name="name">last_updated</property>
+                    <text-property name="displayName">last_updated</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["last_updated"]</expression>
+                    <property name="dataType">date-time</property>
+                </structure>
+            </list-property>
+            <property name="linkedDataModel">Document Sentiments</property>
+            <list-property name="filter">
+                <structure>
+                    <property name="operator">eq</property>
+                    <expression name="expr" type="javascript">row["doc_id"]</expression>
+                    <simple-property-list name="value1">
+                        <value type="javascript">params["DocID"].value</value>
+                    </simple-property-list>
+                    <property name="updateAggregation">true</property>
+                </structure>
+            </list-property>
+            <column id="153"/>
+            <column id="154"/>
+            <column id="155"/>
+            <column id="157"/>
+            <column id="158"/>
+            <column id="159"/>
+            <column id="160"/>
+            <header>
+                <row id="105">
+                    <cell id="106">
+                        <label id="107">
+                            <property name="paddingLeft">3pt</property>
+                            <property name="textAlign">left</property>
+                            <text-property name="text">doc_id</text-property>
+                        </label>
+                    </cell>
+                    <cell id="108">
+                        <label id="111">
+                            <property name="paddingLeft">3pt</property>
+                            <property name="textAlign">left</property>
+                            <text-property name="text">Doc Name</text-property>
+                        </label>
+                    </cell>
+                    <cell id="110">
+                        <label id="119">
+                            <property name="paddingLeft">3pt</property>
+                            <property name="textAlign">left</property>
+                            <text-property name="text">Doc Created</text-property>
+                        </label>
+                    </cell>
+                    <cell id="114">
+                        <label id="123">
+                            <property name="paddingLeft">3pt</property>
+                            <property name="textAlign">left</property>
+                            <text-property name="text">Doc Updated</text-property>
+                        </label>
+                    </cell>
+                    <cell id="116">
+                        <label id="121">
+                            <property name="paddingLeft">3pt</property>
+                            <property name="textAlign">left</property>
+                            <text-property name="text">Processed</text-property>
+                        </label>
+                    </cell>
+                    <cell id="118">
+                        <label id="115">
+                            <property name="paddingLeft">3pt</property>
+                            <property name="textAlign">left</property>
+                            <text-property name="text">Bytes</text-property>
+                        </label>
+                    </cell>
+                    <cell id="120">
+                        <label id="117">
+                            <property name="paddingLeft">3pt</property>
+                            <property name="textAlign">left</property>
+                            <text-property name="text">words</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <detail>
+                <row id="124">
+                    <cell id="125">
+                        <data id="126">
+                            <property name="paddingLeft">3pt</property>
+                            <property name="resultSetColumn">doc_id</property>
+                        </data>
+                    </cell>
+                    <cell id="127">
+                        <data id="130">
+                            <property name="paddingLeft">3pt</property>
+                            <property name="resultSetColumn">orig_id</property>
+                        </data>
+                    </cell>
+                    <cell id="129">
+                        <data id="138">
+                            <property name="paddingLeft">3pt</property>
+                            <structure name="dateTimeFormat">
+                                <property name="category">Custom</property>
+                            </structure>
+                            <property name="resultSetColumn">doc_date</property>
+                        </data>
+                    </cell>
+                    <cell id="133">
+                        <data id="142">
+                            <property name="paddingLeft">3pt</property>
+                            <structure name="dateTimeFormat">
+                                <property name="category">Custom</property>
+                            </structure>
+                            <property name="resultSetColumn">last_updated</property>
+                        </data>
+                    </cell>
+                    <cell id="135">
+                        <data id="140">
+                            <property name="paddingLeft">3pt</property>
+                            <structure name="dateTimeFormat">
+                                <property name="category">Custom</property>
+                            </structure>
+                            <property name="resultSetColumn">last_processed</property>
+                        </data>
+                    </cell>
+                    <cell id="137">
+                        <data id="134">
+                            <property name="paddingLeft">3pt</property>
+                            <structure name="numberFormat">
+                                <property name="category">Fixed</property>
+                                <property name="pattern">#,##0{RoundingMode=HALF_UP}</property>
+                            </structure>
+                            <property name="textAlign">left</property>
+                            <property name="resultSetColumn">length</property>
+                        </data>
+                    </cell>
+                    <cell id="139">
+                        <data id="136">
+                            <property name="paddingLeft">3pt</property>
+                            <structure name="numberFormat">
+                                <property name="category">Fixed</property>
+                                <property name="pattern">#,##0{RoundingMode=HALF_UP}</property>
+                            </structure>
+                            <property name="textAlign">left</property>
+                            <property name="resultSetColumn">words</property>
+                        </data>
+                    </cell>
+                </row>
+                <row id="163">
+                    <cell id="164">
+                        <label id="113">
+                            <property name="paddingLeft">3pt</property>
+                            <text-property name="text">content:</text-property>
+                        </label>
+                    </cell>
+                    <cell id="165">
+                        <property name="colSpan">6</property>
+                        <property name="rowSpan">1</property>
+                        <data id="132">
+                            <property name="paddingLeft">3pt</property>
+                            <property name="paddingRight">3pt</property>
+                            <property name="resultSetColumn">content</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="143">
+                    <cell id="144"/>
+                    <cell id="145"/>
+                    <cell id="146"/>
+                    <cell id="148"/>
+                    <cell id="149"/>
+                    <cell id="150"/>
+                    <cell id="151"/>
+                </row>
+            </footer>
+        </table>
+    </body>
+    <property name="thumbnail">
+        iVBORw0KGgoAAAANSUhEUgAAALgAAADlCAMAAADX/c3cAAADAFBMVEUAAAD////PomuXkHZ/iHzAwMBt
+        gn9ifoK5m2/kqGbW1tbFnm3MzMxzhH6MjHmllHTvrGTdpmje3t6ymHGTjnfFxcXMmWZ7hnyslnL2rmPW
+        pGlmgIHoqmWSjni2mnCdknVsgoCFinq9nG7MmWbmpWsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN+Hl9AAACI0lEQVR4nO3V2Y7aQBQAUYedELZABGHH
+        //+RY5iBsBglaiXVc6MqufvBT0dX3Xbxs65JXZv7+k9Na1vV1Xjd4GXlbcU/dteyk9xl+Qj/EjDhdMLp
+        ej3hbMLphNMJp9vthLNV8MkkNyIl4XTC6YTThYXPZsLZhNMJpxNOFxm+2eRGpCScbrkUziacTjidcLrI
+        8H4/NyIl4XTC6YTTjcfC2YTTCaeLDJ9OcyNSEk4nnE44nXA64XRh4fu9cDbhdMLpKvhqlRuRknA64XTC
+        6cLCm03hbMLphNMJp4sMbzRyI1ISThcWPp8LZxNOJ5wuLHy7Fc4mnE44nXA64XSjUVz4YJAbkZJwOuF0
+        wumE0wmnE04XFn48CmcTTiecroKXZW5ESsLphNMJpwsLb7WEswmnE05XwXu93IiUhNMJpxNOJ5xusSh2
+        u9yIlITTCacTTiecLjJ8NsuNSEk43XAonE04nXA64XSR4ctlbkRKwumE0wmn63SEswmnE04nnC4yfDzO
+        jUjpcBDOJpxOON0TvN1u/zj37dLXa9/fy2W967+DF1VXevEJ4ev1C/hpxYSfwNVTVOrLFgl+nvdp4ucV
+        CH466+/o4jryXNa7fgMv7iYe46icL2cR76h8fA6Lj4sZ5nJ++h9QBd/vb1+EhUdJOF1YeLcrnE04nXC6
+        M7yq+dD80va20VPHp1pPLR4a1tS57XBt/Vj3V0UNu979J+y/4D68dndvewPPryQJnh8+HgAAAABJRU5E
+        rkJggg==
+</property>
+</report>

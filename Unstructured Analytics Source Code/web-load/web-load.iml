@@ -22,5 +22,6 @@
     <orderEntry type="library" scope="PROVIDED" name="Tomcat" level="application_server_libraries" />
     <orderEntry type="module" module-name="Unstructured Analytics" scope="PROVIDED" />
     <orderEntry type="library" name="com.fasterxml.jackson.jr:jackson-jr-all:2.8.1" level="project" />
+    <orderEntry type="module" module-name="Unstructured Analytics Source Code" />
   </component>
 </module>

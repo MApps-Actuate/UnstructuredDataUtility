@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="jackson-jr-all-2.8.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/web-load/web/WEB-INF/lib/jackson-jr-all-2.8.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

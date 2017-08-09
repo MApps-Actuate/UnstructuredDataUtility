@@ -14,7 +14,7 @@
     <div id="load">
         <h1>Load into Project</h1>
 
-        <form id="loadForm" action="/load" method="POST" enctype="multipart/form-data">
+        <form id="loadForm" action="load" method="POST" enctype="multipart/form-data">
             <div class="formItem">
                 <label for="projectSelect">Select Project</label>
                 <select id="projectSelect" name="id"></select>
@@ -41,7 +41,7 @@
     <div id="create">
         <h1>Create new Project</h1>
 
-        <form id="newForm" action="/projects" method="POST">
+        <form id="newForm" action="projects" method="POST">
             <div class="formItem">
                 <label for="name">Project Name</label>
                 <input id="name" type="text" name="name">
@@ -66,7 +66,7 @@
         </div>
         <h1 style="margin-top:-15px">Update [Project] Settings</h1>
 
-        <form id="updateForm" action="/projects">
+        <form id="updateForm" action="projects">
             <div id="settings">
                 <div>
                     <span class="settingTitle">Name</span>
@@ -98,5 +98,18 @@
 </div>
 
 <div id="overlay"></div>
+<div id="loading">
+    <div class="loadingMessage">
+        Loading data...
+    </div>
+    <div class="spinner">
+      <div class="rect1"></div>
+      <div class="rect2"></div>
+      <div class="rect3"></div>
+      <div class="rect4"></div>
+      <div class="rect5"></div>
+    </div>
+</div>
+
 </body>
 </html>

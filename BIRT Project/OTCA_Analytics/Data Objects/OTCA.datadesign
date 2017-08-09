@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <datamart xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
-    <property name="createdBy">Eclipse BIRT Designer Version 4.6.0.v201610042049</property>
+    <property name="createdBy">Eclipse BIRT Designer Version 4.6.0.v201603302314</property>
     <list-property name="userProperties">
         <structure>
             <property name="name">11.ca_sentiment_documents.x</property>
@@ -84,7 +84,7 @@
             </list-property>
             <property name="databaseName">unstructured</property>
             <property name="username">root</property>
-            <encrypted-property name="password" encryptionID="jce">10e521fdf32454a9</encrypted-property>
+            <encrypted-property name="password" encryptionID="jce">6dafde82da2d7f67cf9b402ee63cbcfe</encrypted-property>
             <property name="URL">jdbc:mysql://localhost:3306/unstructured</property>
             <property name="driverClass">com.mysql.jdbc.Driver</property>
             <property name="jarList">C:\OpenText\AnalyticsDesigner\AnalyticsDesigner\plugins\com.actuate.data.oda.jdbc.drivers_23.2.0.v201604061009\lib\mysql\mysql-connector-java-5.1.20-bin.jar</property>
@@ -101,6 +101,21 @@
                     <property name="analysis">measure</property>
                     <text-property name="displayName">doc_id</text-property>
                     <text-property name="heading">doc_id</text-property>
+                    <property name="horizontalAlign">right</property>
+                    <structure name="action">
+                        <property name="targetWindow">_blank</property>
+                        <property name="linkType">drill-through</property>
+                        <property name="targetFileType">report-design</property>
+                        <property name="reportName">/Report Designs/DocContent.rptdesign</property>
+                        <list-property name="paramBindings">
+                            <structure>
+                                <property name="paramName">DocID</property>
+                                <simple-property-list name="expression">
+                                    <value type="javascript">row["doc_id"]</value>
+                                </simple-property-list>
+                            </structure>
+                        </list-property>
+                    </structure>
                     <property name="indexColumn">false</property>
                     <property name="compressed">false</property>
                 </structure>
@@ -4701,6 +4716,27 @@
                         <category-column name="last_updated" id="300">
                             <property name="aliasDataSet">Categories/Documents</property>
                             <property name="resultSetColumnName">last_updated</property>
+                        </category-column>
+                        <category-column name="Link" id="702">
+                            <expression name="expression" type="javascript">dataSetRow["doc_id"]</expression>
+                            <property name="dataType">integer</property>
+                            <property name="horizontalAlign">left</property>
+                            <structure name="action">
+                                <property name="toolTip">Click to View Document Content</property>
+                                <property name="targetWindow">_blank</property>
+                                <property name="linkType">drill-through</property>
+                                <property name="targetFileType">report-design</property>
+                                <property name="reportName">/Report Designs/DocContent.rptdesign</property>
+                                <list-property name="paramBindings">
+                                    <structure>
+                                        <property name="paramName">DocID</property>
+                                        <simple-property-list name="expression">
+                                            <value type="javascript">row["doc_id"]</value>
+                                        </simple-property-list>
+                                    </structure>
+                                </list-property>
+                            </structure>
+                            <structure name="valueFormat"/>
                         </category-column>
                     </property>
                 </category>

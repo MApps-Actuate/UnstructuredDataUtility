@@ -14,11 +14,11 @@ $(document).ready(function () {
 				error("No file selected");
 				return false;
 			}
-			//TODO: put up a spinning something to say we are working on it
+			showLoading();
 			return true;
 		},
 		success: function (data) {
-			//TODO: clear spinning something to say we are done working on it
+			hideLoading();
 			doResponse(data, loadProjectSuccess);
 		},
 		uploadProgress: function (evt, pos, total, pct) {
@@ -134,10 +134,28 @@ function loadProjects(data) {
 		});
 }
 
+function showLoading() {
+	$("#overlay").show();
+	$("#loading").show();
+}
+
+function hideLoading() {
+	var $loading = $("#loading");
+
+	if ($loading.is(":visible")) {
+		$loading.hide();
+		$("#overlay").hide();
+	}
+}
+
+
 function openProjectSettings(evt) {
 	evt.preventDefault();
 
 	var id = $("#projectSelect").val();
+	if (id == null)
+		return;
+
 	updateProject = projects.find(function(p) {
 		return p.id == id;
 	});
@@ -184,6 +202,8 @@ function inform(msg) {
 }
 
 function error(errorData) {
+	hideLoading();
+
 	var alertText = "ERROR\n";
 
 	if (typeof errorData == "string") {

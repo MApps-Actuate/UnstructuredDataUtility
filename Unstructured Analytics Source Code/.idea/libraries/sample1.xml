@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="sample1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/out/artifacts/web-load/sample/Archive.zip!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/web-load/sample/test.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

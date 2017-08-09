@@ -1,19 +1,7 @@
-[
-  {
-    "id": 1,
-    "loaderSettings": {},
-    "name": "Test Project",
-    "password": "test",
-    "type": "TEXT_FILE"
-  },
-  {
-    "id": 2,
-    "loaderSettings": {
-      "loader.include.subTerms": "true",
-      "loader.include.summary": "true"
-    },
-    "name": "Second Test Project",
-    "password": "test",
-    "type": "TEXT_FILE"
-  }
-]
+[ {
+  "id" : 1,
+  "loaderSettings" : { },
+  "name" : "Test Project",
+  "password" : "test",
+  "type" : "TEXT_FILE"
+}]

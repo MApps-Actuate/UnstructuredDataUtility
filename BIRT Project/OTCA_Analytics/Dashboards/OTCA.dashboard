@@ -1,0 +1,1137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.6.0.v201603302314</property>
+    <property name="layoutPreference">auto layout</property>
+    <list-property name="libraries">
+        <structure>
+            <property name="fileName">ThemesReportItems3.rptlibrary</property>
+            <property name="namespace">ThemesReportItems3</property>
+        </structure>
+    </list-property>
+    <data-sources>
+        <data-mart-data-source name="NewDataMartDataSource1" id="703">
+            <property name="datamartURL">Data Objects/OTCA</property>
+            <property name="datamartVersion">-1</property>
+            <property name="accessType">latest</property>
+        </data-mart-data-source>
+    </data-sources>
+    <property name="linkedDataModels">
+        <data-mart-linked-data-model name="NewDataMartDataSource1::Terms" id="704">
+            <property name="dataSource">NewDataMartDataSource1</property>
+            <property name="dataObject">Terms</property>
+        </data-mart-linked-data-model>
+        <data-mart-linked-data-model name="NewDataMartDataSource1::Categories" id="736">
+            <property name="dataSource">NewDataMartDataSource1</property>
+            <property name="dataObject">Categories</property>
+        </data-mart-linked-data-model>
+    </property>
+    <body>
+        <extended-item extensionName="Chart" name="Column Chart - Terms_36df05de-f827-43f2-b626-ed5331ff84c9" id="399">
+            <xml-property name="xmlRepresentation"><![CDATA[<ActuateChart version="2.6.1">
+ <ChartWithAxes version="2.6.1" type="Column Chart" subType="Stacked" orientation="1">
+  <block>
+   <children _type="TitleBlock" visible="false" auto="false">
+    <outline>
+     <color _nil="1"/>
+    </outline>
+    <label>
+     <caption value="">
+      <font size="16.0" bold="false" italic="false" underline="false"/>
+      <color _body=",255,0,0,0"/>
+     </caption>
+     <background _nil="1"/>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </label>
+   </children>
+   <children _type="Plot">
+    <outline>
+     <color _nil="1"/>
+    </outline>
+    <clientArea>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </clientArea>
+   </children>
+   <children _type="Legend" visible="true" orientation="0" position="0">
+    <outline>
+     <color _nil="1"/>
+    </outline>
+    <clientArea>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </clientArea>
+    <separator>
+     <color _nil="1"/>
+    </separator>
+    <title visible="true">
+     <background _nil="1"/>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </title>
+   </children>
+   <outline>
+    <color _nil="1"/>
+   </outline>
+  </block>
+  <extendedProperties name="enable.area.alt" value="false"/>
+  <extendedProperties name="enable.drill.category" value="true"/>
+  <extendedProperties name="enable.drill.series" value="true"/>
+  <extendedProperties name="jschart.range.selector" value="false"/>
+  <extendedProperties name="jschart.navigator" value="false"/>
+  <extendedProperties name="jschart.scroll" value="true"/>
+  <extendedProperties name="keep.hierarchy.category" value="true"/>
+  <extendedProperties name="keep.hierarchy.series" value="true"/>
+  <extendedProperties name="enable.data.summarize" value="true"/>
+  <extendedProperties name="jschart.glass.style" value="false"/>
+  <extendedProperties name="jschart.zoom" value="xy"/>
+  <extendedProperties name="jschart.series.shadow" value="false"/>
+  <sampleData>
+   <baseSampleData dataSetRepresentation="QWER"/>
+   <orthogonalSampleData dataSetRepresentation="5 5" seriesDefinitionIndex="0"/>
+  </sampleData>
+  <interactivity enable="true" legendBehavior="1"/>
+  <emptyMessage visible="true">
+   <caption value="This chart contains no data."/>
+   <background _body=",64,127,127,127"/>
+   <outline>
+    <color _body=",128,127,127,127"/>
+   </outline>
+  </emptyMessage>
+  <axes type="2" gapWidth="0.5" labelPosition="1" staggered="false" interval="1" categoryAxis="true">
+   <title visible="false">
+    <caption value="">
+     <font size="14.0" bold="false" italic="false" underline="false"/>
+     <color _body=",255,0,0,0"/>
+    </caption>
+    <background _nil="1"/>
+    <outline>
+     <color _nil="1"/>
+    </outline>
+   </title>
+   <associatedAxes type="0" labelPosition="2" primaryAxis="true" percent="false">
+    <title visible="false">
+     <caption value="">
+      <font bold="false" italic="false" underline="false"/>
+      <color _body=",255,0,0,0"/>
+     </caption>
+     <background _nil="1"/>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </title>
+    <seriesDefinitions>
+     <query definition=""/>
+     <series _type="BarSeries" seriesIdentifier="length" stacked="true">
+      <label>
+       <caption value="length"/>
+       <background _nil="1"/>
+       <outline>
+        <color _nil="1"/>
+       </outline>
+      </label>
+      <dataDefinition definition="row[&quot;length&quot;]">
+       <grouping enabled="true"/>
+      </dataDefinition>
+      <triggers condition="6">
+       <action type="1">
+        <value _type="TooltipValue" text="" delay="0"/>
+       </action>
+      </triggers>
+      <curveFitting _nil="1"/>
+     </series>
+    </seriesDefinitions>
+    <seriesDefinitions>
+     <query definition=""/>
+     <series _type="BarSeries" seriesIdentifier="words" labelPosition="5" stacked="true" riser="0">
+      <label>
+       <caption value="words"/>
+       <background _nil="1"/>
+       <outline>
+        <color _nil="1"/>
+       </outline>
+      </label>
+      <dataDefinition definition="row[&quot;words&quot;]">
+       <grouping enabled="true"/>
+      </dataDefinition>
+      <triggers condition="6">
+       <action type="1">
+        <value _type="TooltipValue" text="" delay="0"/>
+       </action>
+      </triggers>
+      <triggers condition="6">
+       <action type="1">
+        <value _type="TooltipValue" text="" delay="0"/>
+       </action>
+      </triggers>
+      <triggers condition="6">
+       <action type="1">
+        <value _type="TooltipValue" text="" delay="0"/>
+       </action>
+      </triggers>
+      <curveFitting _nil="1"/>
+     </series>
+    </seriesDefinitions>
+    <lineAttributes>
+     <color _nil="1"/>
+    </lineAttributes>
+    <label visible="true">
+     <caption>
+      <font size="10.0" bold="false" italic="false" underline="false" rotation="0.0"/>
+      <color _body=",255,0,0,0"/>
+     </caption>
+     <background _nil="1"/>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </label>
+    <majorGrid>
+     <lineAttributes>
+      <color _nil="1"/>
+     </lineAttributes>
+     <tickAttributes>
+      <color _nil="1"/>
+     </tickAttributes>
+    </majorGrid>
+    <minorGrid>
+     <lineAttributes>
+      <color _nil="1"/>
+     </lineAttributes>
+     <tickAttributes>
+      <color _nil="1"/>
+     </tickAttributes>
+    </minorGrid>
+    <scale step="0.0" stepNumber="1"/>
+    <origin>
+     <value _nil="1"/>
+    </origin>
+   </associatedAxes>
+   <seriesDefinitions sorting="0">
+    <query definition=""/>
+    <series seriesIdentifier="main_term">
+     <label>
+      <caption value="main_term"/>
+      <background _nil="1"/>
+      <outline>
+       <color _nil="1"/>
+      </outline>
+     </label>
+     <dataDefinition definition="row[&quot;main_term&quot;]"/>
+     <curveFitting _nil="1"/>
+    </series>
+    <grouping enabled="true" groupingInterval="0.0"/>
+   </seriesDefinitions>
+   <lineAttributes>
+    <color _nil="1"/>
+   </lineAttributes>
+   <label visible="true">
+    <caption>
+     <font size="10.0" bold="false" italic="false" underline="false" rotation="0.0"/>
+     <color _body=",255,0,0,0"/>
+    </caption>
+    <background _nil="1"/>
+    <outline>
+     <color _nil="1"/>
+    </outline>
+   </label>
+   <majorGrid>
+    <lineAttributes>
+     <color _nil="1"/>
+    </lineAttributes>
+    <tickAttributes>
+     <color _nil="1"/>
+    </tickAttributes>
+   </majorGrid>
+   <minorGrid>
+    <lineAttributes>
+     <color _nil="1"/>
+    </lineAttributes>
+    <tickAttributes>
+     <color _nil="1"/>
+    </tickAttributes>
+   </minorGrid>
+   <origin>
+    <value _nil="1"/>
+   </origin>
+  </axes>
+  <rotation>
+   <angles/>
+  </rotation>
+ </ChartWithAxes>
+</ActuateChart>
+]]></xml-property>
+            <property name="outputFormat">JS</property>
+            <property name="height">240pt</property>
+            <property name="width">567pt</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">main_term</property>
+                    <text-property name="displayName">main_term</text-property>
+                    <expression name="expression">dataSetRow["main_term"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">length</property>
+                    <text-property name="displayName">length</text-property>
+                    <expression name="expression">dataSetRow["length"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">words</property>
+                    <text-property name="displayName">words</text-property>
+                    <expression name="expression">dataSetRow["words"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+            </list-property>
+            <property name="linkedDataModel">NewDataMartDataSource1::Terms</property>
+            <list-property name="userProperties">
+                <structure>
+                    <property name="name">copyHyperlink</property>
+                    <property name="type">string</property>
+                </structure>
+            </list-property>
+            <property name="copyHyperlink">true</property>
+        </extended-item>
+        <extended-item extensionName="Chart" name="Radar Chart - Categories_602c31c2-7159-4797-82e9-8e9d4f4670d1" id="403">
+            <xml-property name="xmlRepresentation"><![CDATA[<ActuateChart version="2.6.1">
+ <ChartWithoutAxes version="2.6.1" type="Radar Chart" subType="Standard Radar Chart" dimension="0">
+  <block>
+   <children _type="TitleBlock" visible="false" auto="false">
+    <outline>
+     <color _nil="1"/>
+    </outline>
+    <label>
+     <caption value="">
+      <font size="16.0" bold="false" italic="false" underline="false"/>
+      <color _body=",255,0,0,0"/>
+     </caption>
+     <background _nil="1"/>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </label>
+   </children>
+   <children _type="Plot">
+    <outline>
+     <color _nil="1"/>
+    </outline>
+    <clientArea>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </clientArea>
+   </children>
+   <children _type="Legend" visible="false" orientation="1" position="3">
+    <outline>
+     <color _nil="1"/>
+    </outline>
+    <clientArea>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </clientArea>
+    <separator>
+     <color _nil="1"/>
+    </separator>
+    <title visible="true">
+     <background _nil="1"/>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </title>
+   </children>
+   <outline>
+    <color _nil="1"/>
+   </outline>
+  </block>
+  <extendedProperties name="enable.area.alt" value="false"/>
+  <extendedProperties name="enable.drill.category" value="true"/>
+  <extendedProperties name="enable.drill.series" value="true"/>
+  <extendedProperties name="keep.hierarchy.category" value="true"/>
+  <extendedProperties name="keep.hierarchy.series" value="true"/>
+  <extendedProperties name="enable.data.summarize" value="true"/>
+  <extendedProperties name="jschart.series.shadow" value="false"/>
+  <sampleData>
+   <baseSampleData dataSetRepresentation="&#039;A&#039;,&#039;B&#039;,&#039;C&#039;,&#039;D&#039;,&#039;E&#039;"/>
+   <orthogonalSampleData dataSetRepresentation="6,4,12,8,10" seriesDefinitionIndex="0"/>
+  </sampleData>
+  <interactivity enable="true" legendBehavior="1"/>
+  <emptyMessage visible="true">
+   <caption value="This chart contains no data."/>
+   <background _body=",64,127,127,127"/>
+   <outline>
+    <color _body=",128,127,127,127"/>
+   </outline>
+  </emptyMessage>
+  <seriesDefinitions sorting="0">
+   <query definition=""/>
+   <seriesDefinitions>
+    <query definition=""/>
+    <seriesPalette/>
+    <series _type="RadarSeries" visible="true" seriesIdentifier="category_id">
+     <label>
+      <caption>
+       <font>
+        <alignment/>
+       </font>
+      </caption>
+      <outline/>
+      <insets/>
+     </label>
+     <dataDefinition definition="row[&quot;category_id&quot;]"/>
+     <dataPoint/>
+     <triggers condition="6">
+      <action type="1">
+       <value _type="TooltipValue" text="" delay="0"/>
+      </action>
+     </triggers>
+     <marker>
+      <outline/>
+     </marker>
+     <lineAttributes/>
+     <webLineAttributes/>
+     <webLabel>
+      <caption>
+       <font>
+        <alignment/>
+       </font>
+      </caption>
+      <outline/>
+      <insets/>
+     </webLabel>
+     <catLabel>
+      <caption>
+       <font>
+        <alignment/>
+       </font>
+      </caption>
+      <outline/>
+      <insets/>
+     </catLabel>
+    </series>
+    <grouping enabled="true" groupType="1" aggregateExpression="Count"/>
+   </seriesDefinitions>
+   <series seriesIdentifier="category">
+    <label>
+     <background _nil="1"/>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </label>
+    <dataDefinition definition="row[&quot;category&quot;]"/>
+    <curveFitting _nil="1"/>
+   </series>
+   <grouping enabled="true" groupingInterval="0.0"/>
+  </seriesDefinitions>
+ </ChartWithoutAxes>
+</ActuateChart>
+]]></xml-property>
+            <property name="outputFormat">JS</property>
+            <property name="height">347pt</property>
+            <property name="width">567pt</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">category</property>
+                    <text-property name="displayName">category</text-property>
+                    <expression name="expression">dataSetRow["category"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">category_id</property>
+                    <text-property name="displayName">category_id</text-property>
+                    <expression name="expression">dataSetRow["category_id"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <property name="linkedDataModel">NewDataMartDataSource1::Categories</property>
+            <list-property name="userProperties">
+                <structure>
+                    <property name="name">copyHyperlink</property>
+                    <property name="type">string</property>
+                </structure>
+            </list-property>
+            <property name="copyHyperlink">true</property>
+        </extended-item>
+        <extended-item extensionName="Chart" name="Pie Chart - Terms_19a985ff-b099-4531-927e-8d0f5642f263" id="408">
+            <xml-property name="xmlRepresentation"><![CDATA[<ActuateChart version="2.6.1">
+ <ChartWithoutAxes version="2.6.1" type="Doughnut Chart" subType="standard" dimension="0">
+  <block>
+   <children _type="TitleBlock" visible="false" auto="false">
+    <outline>
+     <color _nil="1"/>
+    </outline>
+    <label>
+     <caption value="">
+      <font size="16.0" bold="false" italic="false" underline="false"/>
+      <color _body=",255,0,0,0"/>
+     </caption>
+     <background _nil="1"/>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </label>
+   </children>
+   <children _type="Plot">
+    <outline>
+     <color _nil="1"/>
+    </outline>
+    <clientArea>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </clientArea>
+   </children>
+   <children _type="Legend" visible="true" orientation="0" position="0" itemType="1">
+    <outline>
+     <color _nil="1"/>
+    </outline>
+    <clientArea>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </clientArea>
+    <separator>
+     <color _nil="1"/>
+    </separator>
+    <title visible="true">
+     <caption value="tone"/>
+     <background _nil="1"/>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </title>
+   </children>
+   <outline>
+    <color _nil="1"/>
+   </outline>
+  </block>
+  <extendedProperties name="enable.area.alt" value="false"/>
+  <extendedProperties name="enable.drill.category" value="true"/>
+  <extendedProperties name="enable.drill.series" value="true"/>
+  <extendedProperties name="keep.hierarchy.category" value="true"/>
+  <extendedProperties name="keep.hierarchy.series" value="true"/>
+  <extendedProperties name="enable.data.summarize" value="true"/>
+  <extendedProperties name="jschart.series.shadow" value="false"/>
+  <sampleData>
+   <baseSampleData dataSetRepresentation="&#039;A&#039;,&#039;B&#039;,&#039;C&#039;,&#039;D&#039;,&#039;E&#039;"/>
+   <orthogonalSampleData dataSetRepresentation="6,4,12,8,10" seriesDefinitionIndex="0"/>
+  </sampleData>
+  <interactivity enable="true" legendBehavior="1"/>
+  <emptyMessage visible="true">
+   <caption value="This chart contains no data."/>
+   <background _body=",64,127,127,127"/>
+   <outline>
+    <color _body=",128,127,127,127"/>
+   </outline>
+  </emptyMessage>
+  <seriesDefinitions sorting="0">
+   <query definition=""/>
+   <seriesDefinitions>
+    <query definition=""/>
+    <seriesPalette/>
+    <series _type="PieSeries" visible="true" seriesIdentifier="tone" explosion="20" titlePosition="1" rotation="0.0" innerRadius="60.0">
+     <label>
+      <caption>
+       <font size="10.0" bold="false" italic="false" underline="false"/>
+       <color _body=",255,0,0,0"/>
+      </caption>
+      <background _nil="1"/>
+      <outline>
+       <color _nil="1"/>
+      </outline>
+     </label>
+     <dataDefinition definition="row[&quot;tone&quot;]"/>
+     <triggers condition="6">
+      <action type="1">
+       <value _type="TooltipValue" text="" delay="0"/>
+      </action>
+     </triggers>
+     <title>
+      <caption>
+       <font size="10.666667"/>
+      </caption>
+      <background _nil="1"/>
+      <outline>
+       <color _nil="1"/>
+      </outline>
+     </title>
+    </series>
+    <grouping enabled="true" groupType="1" aggregateExpression="Count"/>
+   </seriesDefinitions>
+   <series seriesIdentifier="tone">
+    <label>
+     <background _nil="1"/>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </label>
+    <dataDefinition definition="row[&quot;tone&quot;]"/>
+    <curveFitting _nil="1"/>
+   </series>
+   <grouping enabled="true" groupingInterval="0.0"/>
+  </seriesDefinitions>
+ </ChartWithoutAxes>
+</ActuateChart>
+]]></xml-property>
+            <property name="outputFormat">JS</property>
+            <property name="height">238.5pt</property>
+            <property name="width">520.5pt</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">tone</property>
+                    <text-property name="displayName">tone</text-property>
+                    <expression name="expression">dataSetRow["tone"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <property name="linkedDataModel">NewDataMartDataSource1::Terms</property>
+            <list-property name="userProperties">
+                <structure>
+                    <property name="name">copyHyperlink</property>
+                    <property name="type">string</property>
+                </structure>
+            </list-property>
+            <property name="copyHyperlink">true</property>
+        </extended-item>
+    </body>
+    <property name="dashboardView">
+        <dashboard id="2">
+            <property name="activeTab">180a3b33-87c3-4efd-af27-ac689d7b111c</property>
+            <property name="tabs">
+                <tab-element name="180a3b33-87c3-4efd-af27-ac689d7b111c" id="3">
+                    <property name="title">Analysis</property>
+                    <property name="sections">
+                        <section id="4">
+                            <property name="width">17.615176151761517%</property>
+                            <property name="gadgets">
+                                <gadget name="Gadget_dc1cd022-1d52-4e4c-93bf-b90c46ac5f33" id="387">
+                                    <property name="height">87px</property>
+                                    <property name="title">Tone</property>
+                                    <property name="showTitle">true</property>
+                                    <property name="showBorder">true</property>
+                                    <property name="zIndex">3</property>
+                                    <property name="showScrollBar">false</property>
+                                    <property name="height">87px</property>
+                                    <property name="caption">
+                                        <gadget-caption id="388">
+                                            <property name="showCaption">true</property>
+                                            <property name="horizontalAlignment">left</property>
+                                            <property name="fontFamily">"Lato"</property>
+                                            <property name="fontSize">18pt</property>
+                                            <property name="fontWeight">normal</property>
+                                            <property name="fontStyle">normal</property>
+                                            <property name="color">#353535</property>
+                                            <property name="textUnderline">none</property>
+                                        </gadget-caption>
+                                    </property>
+                                    <property name="content">
+                                        <check-box-data-selector id="389">
+                                            <property name="linkedDataModel">NewDataMartDataSource1::Terms</property>
+                                            <property name="sortDirection">desc</property>
+                                            <simple-property-list name="columnNames">
+                                                <value>tone</value>
+                                                <value>tone</value>
+                                            </simple-property-list>
+                                            <property name="orientation">horizontal</property>
+                                            <property name="autoAdjust">true</property>
+                                            <property name="autoAdjustNumber">3</property>
+                                            <property name="listLimit">1000</property>
+                                        </check-box-data-selector>
+                                    </property>
+                                    <property name="observers">
+                                        <event-subscriber>
+                                            <property name="eventName">SELECT_EVENT:SEMANTIC_filter</property>
+                                            <property name="eventObjects">
+                                                <event-object>
+                                                    <property name="gadget">f7d977a8-310c-4541-8aae-8cccb96c6fa8</property>
+                                                    <property name="dirty">false</property>
+                                                </event-object>
+                                                <event-object>
+                                                    <property name="gadget">Gadget_d83c8f4c-9ec1-4ce2-b828-ebf0c7af0cf0</property>
+                                                    <property name="dirty">false</property>
+                                                </event-object>
+                                                <event-object>
+                                                    <property name="gadget">Gadget_b690161b-4a44-457b-b6c9-dbfcf310cb4f</property>
+                                                    <property name="dirty">false</property>
+                                                </event-object>
+                                                <event-object>
+                                                    <property name="gadget">Gadget_382fee2c-2441-4a1d-ad20-f62bde49e457</property>
+                                                    <property name="dirty">false</property>
+                                                </event-object>
+                                            </property>
+                                        </event-subscriber>
+                                    </property>
+                                    <property name="subscribeTo">
+                                        <event-subscriber>
+                                            <property name="eventName">SELECT_EVENT:SEMANTIC_filter</property>
+                                            <property name="eventObjects">
+                                                <event-object>
+                                                    <property name="gadget">Gadget_d83c8f4c-9ec1-4ce2-b828-ebf0c7af0cf0</property>
+                                                    <property name="dirty">false</property>
+                                                </event-object>
+                                            </property>
+                                        </event-subscriber>
+                                    </property>
+                                </gadget>
+                                <gadget name="Gadget_d83c8f4c-9ec1-4ce2-b828-ebf0c7af0cf0" id="393">
+                                    <property name="height">158px</property>
+                                    <property name="title">main_term</property>
+                                    <property name="showTitle">true</property>
+                                    <property name="showBorder">true</property>
+                                    <property name="zIndex">4</property>
+                                    <property name="showScrollBar">false</property>
+                                    <property name="height">158px</property>
+                                    <property name="caption">
+                                        <gadget-caption id="394">
+                                            <property name="showCaption">true</property>
+                                            <property name="horizontalAlignment">left</property>
+                                            <property name="fontFamily">"Lato"</property>
+                                            <property name="fontSize">18pt</property>
+                                            <property name="fontWeight">normal</property>
+                                            <property name="fontStyle">normal</property>
+                                            <property name="color">#353535</property>
+                                            <property name="textUnderline">none</property>
+                                        </gadget-caption>
+                                    </property>
+                                    <property name="content">
+                                        <list-data-selector id="395">
+                                            <property name="linkedDataModel">NewDataMartDataSource1::Terms</property>
+                                            <property name="sortDirection">asc</property>
+                                            <property name="operator">in</property>
+                                            <simple-property-list name="columnNames">
+                                                <value>main_term</value>
+                                                <value>main_term</value>
+                                            </simple-property-list>
+                                            <property name="allowMultiValue">true</property>
+                                            <property name="enableSearch">false</property>
+                                            <property name="listLimit">1000</property>
+                                        </list-data-selector>
+                                    </property>
+                                    <property name="observers">
+                                        <event-subscriber>
+                                            <property name="eventName">SELECT_EVENT:SEMANTIC_filter</property>
+                                            <property name="eventObjects">
+                                                <event-object>
+                                                    <property name="gadget">Gadget_dc1cd022-1d52-4e4c-93bf-b90c46ac5f33</property>
+                                                    <property name="dirty">false</property>
+                                                </event-object>
+                                                <event-object>
+                                                    <property name="gadget">f7d977a8-310c-4541-8aae-8cccb96c6fa8</property>
+                                                    <property name="dirty">false</property>
+                                                </event-object>
+                                                <event-object>
+                                                    <property name="gadget">Gadget_b690161b-4a44-457b-b6c9-dbfcf310cb4f</property>
+                                                    <property name="dirty">false</property>
+                                                </event-object>
+                                                <event-object>
+                                                    <property name="gadget">Gadget_382fee2c-2441-4a1d-ad20-f62bde49e457</property>
+                                                    <property name="dirty">false</property>
+                                                </event-object>
+                                            </property>
+                                        </event-subscriber>
+                                    </property>
+                                    <property name="subscribeTo">
+                                        <event-subscriber>
+                                            <property name="eventName">SELECT_EVENT:SEMANTIC_filter</property>
+                                            <property name="eventObjects">
+                                                <event-object>
+                                                    <property name="gadget">Gadget_dc1cd022-1d52-4e4c-93bf-b90c46ac5f33</property>
+                                                    <property name="dirty">false</property>
+                                                </event-object>
+                                            </property>
+                                        </event-subscriber>
+                                    </property>
+                                </gadget>
+                                <gadget name="Gadget_13704362-7a49-4ea6-8ccf-2cefb936fe7b" id="10">
+                                    <property name="height">457px</property>
+                                    <property name="title">Category</property>
+                                    <property name="showTitle">true</property>
+                                    <property name="showBorder">true</property>
+                                    <property name="zIndex">2</property>
+                                    <property name="showScrollBar">false</property>
+                                    <property name="height">457px</property>
+                                    <property name="caption">
+                                        <gadget-caption id="11">
+                                            <property name="showCaption">true</property>
+                                            <property name="horizontalAlignment">left</property>
+                                            <property name="fontFamily">"Lato"</property>
+                                            <property name="fontSize">18pt</property>
+                                            <property name="fontWeight">normal</property>
+                                            <property name="fontStyle">normal</property>
+                                            <property name="color">#353535</property>
+                                            <property name="textUnderline">none</property>
+                                        </gadget-caption>
+                                    </property>
+                                    <property name="content">
+                                        <list-data-selector id="570">
+                                            <property name="linkedDataModel">NewDataMartDataSource1::Categories</property>
+                                            <property name="sortDirection">asc</property>
+                                            <simple-property-list name="columnNames">
+                                                <value>category</value>
+                                                <value>category</value>
+                                            </simple-property-list>
+                                            <property name="allowMultiValue">true</property>
+                                            <property name="enableSearch">true</property>
+                                            <property name="listLimit">1000</property>
+                                        </list-data-selector>
+                                    </property>
+                                    <property name="observers">
+                                        <event-subscriber>
+                                            <property name="eventName">SELECT_EVENT:SEMANTIC_filter</property>
+                                            <property name="eventObjects">
+                                                <event-object>
+                                                    <property name="gadget">f7d977a8-310c-4541-8aae-8cccb96c6fa8</property>
+                                                    <property name="dirty">false</property>
+                                                </event-object>
+                                                <event-object>
+                                                    <property name="gadget">Gadget_77450447-730f-4926-86aa-3fb07b605958</property>
+                                                    <property name="dirty">false</property>
+                                                </event-object>
+                                            </property>
+                                        </event-subscriber>
+                                        <event-subscriber>
+                                            <property name="eventName">SELECT_EVENT:SEMANTIC_parameter</property>
+                                            <property name="eventObjects">
+                                                <event-object>
+                                                    <property name="appliedTo">Category</property>
+                                                    <property name="gadget">Gadget_dd0df0e6-50d6-44ab-bd80-8493c8ecddd9</property>
+                                                    <property name="dirty">false</property>
+                                                </event-object>
+                                            </property>
+                                        </event-subscriber>
+                                    </property>
+                                </gadget>
+                                <gadget name="f7d977a8-310c-4541-8aae-8cccb96c6fa8" id="6">
+                                    <property name="height">150px</property>
+                                    <property name="zIndex">1</property>
+                                    <property name="isVisible">false</property>
+                                    <property name="height">150px</property>
+                                    <property name="caption">
+                                        <gadget-caption id="8">
+                                            <property name="showCaption">true</property>
+                                            <property name="horizontalAlignment">left</property>
+                                            <property name="fontFamily">"tahoma", "arial", "verdana", sans-serif</property>
+                                            <property name="fontSize">8pt</property>
+                                            <property name="fontWeight">bold</property>
+                                            <property name="color">#000000</property>
+                                        </gadget-caption>
+                                    </property>
+                                    <property name="content">
+                                        <current-selections id="7"/>
+                                    </property>
+                                    <property name="subscribeTo">
+                                        <event-subscriber>
+                                            <property name="eventName">SELECT_EVENT:SEMANTIC_filter</property>
+                                            <property name="eventObjects">
+                                                <event-object>
+                                                    <property name="gadget">Gadget_dc1cd022-1d52-4e4c-93bf-b90c46ac5f33</property>
+                                                    <property name="dirty">false</property>
+                                                </event-object>
+                                                <event-object>
+                                                    <property name="gadget">Gadget_d83c8f4c-9ec1-4ce2-b828-ebf0c7af0cf0</property>
+                                                    <property name="dirty">false</property>
+                                                </event-object>
+                                                <event-object>
+                                                    <property name="gadget">Gadget_13704362-7a49-4ea6-8ccf-2cefb936fe7b</property>
+                                                    <property name="dirty">false</property>
+                                                </event-object>
+                                            </property>
+                                        </event-subscriber>
+                                    </property>
+                                </gadget>
+                            </property>
+                        </section>
+                        <section id="5">
+                            <property name="width">42.87262872628727%</property>
+                            <property name="gadgets">
+                                <gadget name="Gadget_b690161b-4a44-457b-b6c9-dbfcf310cb4f" id="397">
+                                    <property name="height">355px</property>
+                                    <property name="title">Column Chart - Terms</property>
+                                    <property name="showTitle">true</property>
+                                    <property name="showBorder">true</property>
+                                    <property name="zIndex">5</property>
+                                    <property name="showScrollBar">false</property>
+                                    <property name="height">355px</property>
+                                    <property name="caption">
+                                        <gadget-caption id="398">
+                                            <property name="showCaption">false</property>
+                                            <property name="horizontalAlignment">left</property>
+                                            <property name="fontFamily">"Lato"</property>
+                                            <property name="fontSize">18pt</property>
+                                            <property name="fontWeight">normal</property>
+                                            <property name="fontStyle">normal</property>
+                                            <property name="color">#353535</property>
+                                            <property name="textUnderline">none</property>
+                                        </gadget-caption>
+                                    </property>
+                                    <property name="content">
+                                        <data-view id="400">
+                                            <property name="gadgetType">viewer</property>
+                                            <property name="internalReportLetRef">Column Chart - Terms_36df05de-f827-43f2-b626-ed5331ff84c9</property>
+                                        </data-view>
+                                    </property>
+                                    <property name="observers">
+                                        <event-subscriber>
+                                            <property name="eventName">SELECT_EVENT:SEMANTIC_filter</property>
+                                            <property name="eventObjects">
+                                                <event-object>
+                                                    <property name="gadget">Gadget_382fee2c-2441-4a1d-ad20-f62bde49e457</property>
+                                                </event-object>
+                                            </property>
+                                        </event-subscriber>
+                                    </property>
+                                    <property name="subscribeTo">
+                                        <event-subscriber>
+                                            <property name="eventName">SELECT_EVENT:SEMANTIC_filter</property>
+                                            <property name="eventObjects">
+                                                <event-object>
+                                                    <property name="gadget">Gadget_dc1cd022-1d52-4e4c-93bf-b90c46ac5f33</property>
+                                                    <property name="dirty">false</property>
+                                                </event-object>
+                                                <event-object>
+                                                    <property name="gadget">Gadget_d83c8f4c-9ec1-4ce2-b828-ebf0c7af0cf0</property>
+                                                    <property name="dirty">false</property>
+                                                </event-object>
+                                                <event-object>
+                                                    <property name="gadget">Gadget_382fee2c-2441-4a1d-ad20-f62bde49e457</property>
+                                                </event-object>
+                                            </property>
+                                        </event-subscriber>
+                                    </property>
+                                </gadget>
+                                <gadget name="Gadget_77450447-730f-4926-86aa-3fb07b605958" id="401">
+                                    <property name="height">500px</property>
+                                    <property name="title">Radar Chart - Categories</property>
+                                    <property name="showTitle">true</property>
+                                    <property name="showBorder">true</property>
+                                    <property name="zIndex">6</property>
+                                    <property name="showScrollBar">false</property>
+                                    <property name="height">500px</property>
+                                    <property name="caption">
+                                        <gadget-caption id="402">
+                                            <property name="showCaption">false</property>
+                                            <property name="horizontalAlignment">left</property>
+                                            <property name="fontFamily">"Lato"</property>
+                                            <property name="fontSize">18pt</property>
+                                            <property name="fontWeight">normal</property>
+                                            <property name="fontStyle">normal</property>
+                                            <property name="color">#353535</property>
+                                            <property name="textUnderline">none</property>
+                                        </gadget-caption>
+                                    </property>
+                                    <property name="content">
+                                        <data-view id="404">
+                                            <property name="gadgetType">viewer</property>
+                                            <property name="internalReportLetRef">Radar Chart - Categories_602c31c2-7159-4797-82e9-8e9d4f4670d1</property>
+                                        </data-view>
+                                    </property>
+                                    <property name="subscribeTo">
+                                        <event-subscriber>
+                                            <property name="eventName">SELECT_EVENT:SEMANTIC_filter</property>
+                                            <property name="eventObjects">
+                                                <event-object>
+                                                    <property name="gadget">Gadget_13704362-7a49-4ea6-8ccf-2cefb936fe7b</property>
+                                                    <property name="dirty">false</property>
+                                                </event-object>
+                                            </property>
+                                        </event-subscriber>
+                                    </property>
+                                </gadget>
+                            </property>
+                        </section>
+                        <section id="405">
+                            <property name="width">39.51219512195122%</property>
+                            <property name="gadgets">
+                                <gadget name="Gadget_382fee2c-2441-4a1d-ad20-f62bde49e457" id="406">
+                                    <property name="height">353px</property>
+                                    <property name="title">Pie Chart - Terms</property>
+                                    <property name="showTitle">true</property>
+                                    <property name="showBorder">true</property>
+                                    <property name="zIndex">7</property>
+                                    <property name="showScrollBar">false</property>
+                                    <property name="height">353px</property>
+                                    <property name="caption">
+                                        <gadget-caption id="407">
+                                            <property name="showCaption">false</property>
+                                            <property name="horizontalAlignment">left</property>
+                                            <property name="fontFamily">"Lato"</property>
+                                            <property name="fontSize">18pt</property>
+                                            <property name="fontWeight">normal</property>
+                                            <property name="fontStyle">normal</property>
+                                            <property name="color">#353535</property>
+                                            <property name="textUnderline">none</property>
+                                        </gadget-caption>
+                                    </property>
+                                    <property name="content">
+                                        <data-view id="409">
+                                            <property name="gadgetType">viewer</property>
+                                            <property name="internalReportLetRef">Pie Chart - Terms_19a985ff-b099-4531-927e-8d0f5642f263</property>
+                                        </data-view>
+                                    </property>
+                                    <property name="observers">
+                                        <event-subscriber>
+                                            <property name="eventName">SELECT_EVENT:SEMANTIC_filter</property>
+                                            <property name="eventObjects">
+                                                <event-object>
+                                                    <property name="gadget">Gadget_b690161b-4a44-457b-b6c9-dbfcf310cb4f</property>
+                                                </event-object>
+                                            </property>
+                                        </event-subscriber>
+                                    </property>
+                                    <property name="subscribeTo">
+                                        <event-subscriber>
+                                            <property name="eventName">SELECT_EVENT:SEMANTIC_filter</property>
+                                            <property name="eventObjects">
+                                                <event-object>
+                                                    <property name="gadget">Gadget_dc1cd022-1d52-4e4c-93bf-b90c46ac5f33</property>
+                                                    <property name="dirty">false</property>
+                                                </event-object>
+                                                <event-object>
+                                                    <property name="gadget">Gadget_d83c8f4c-9ec1-4ce2-b828-ebf0c7af0cf0</property>
+                                                    <property name="dirty">false</property>
+                                                </event-object>
+                                                <event-object>
+                                                    <property name="gadget">Gadget_b690161b-4a44-457b-b6c9-dbfcf310cb4f</property>
+                                                </event-object>
+                                            </property>
+                                        </event-subscriber>
+                                    </property>
+                                </gadget>
+                                <gadget name="Gadget_dd0df0e6-50d6-44ab-bd80-8493c8ecddd9" id="673">
+                                    <property name="title">Report - DocList</property>
+                                    <property name="externalGadgetURI">^/Report Designs/DocList.rptdesign</property>
+                                    <property name="showTitle">true</property>
+                                    <property name="showBorder">true</property>
+                                    <property name="zIndex">10</property>
+                                    <property name="showScrollBar">true</property>
+                                    <property name="caption">
+                                        <gadget-caption id="674">
+                                            <property name="showCaption">false</property>
+                                            <property name="horizontalAlignment">left</property>
+                                            <property name="fontFamily">"Lato"</property>
+                                            <property name="fontSize">18pt</property>
+                                            <property name="fontWeight">normal</property>
+                                            <property name="fontStyle">normal</property>
+                                            <property name="color">#353535</property>
+                                            <property name="textUnderline">none</property>
+                                        </gadget-caption>
+                                    </property>
+                                    <property name="content">
+                                        <data-view id="675">
+                                            <list-property name="userProperties">
+                                                <structure>
+                                                    <property name="name">showViewerToolbar</property>
+                                                    <property name="type">boolean</property>
+                                                </structure>
+                                            </list-property>
+                                            <property name="showViewerToolbar">true</property>
+                                            <property name="gadgetType">viewer</property>
+                                            <property name="externalContentRef">
+                                                <external-element-ref>
+                                                    <property name="sourceFile">^/Report Designs/DocList.rptdesign</property>
+                                                </external-element-ref>
+                                            </property>
+                                            <property name="paramSettings">
+                                                <param-setting>
+                                                    <property name="paramName">Category</property>
+                                                    <property name="displayText">null</property>
+                                                    <expression name="value"></expression>
+                                                    <property name="isHidden">true</property>
+                                                    <expression name="defaultValue" type="javascript"></expression>
+                                                </param-setting>
+                                            </property>
+                                        </data-view>
+                                    </property>
+                                    <property name="subscribeTo">
+                                        <event-subscriber>
+                                            <property name="eventName">SELECT_EVENT:SEMANTIC_parameter</property>
+                                            <property name="eventObjects">
+                                                <event-object>
+                                                    <property name="appliedTo">Category</property>
+                                                    <property name="gadget">Gadget_13704362-7a49-4ea6-8ccf-2cefb936fe7b</property>
+                                                    <property name="dirty">false</property>
+                                                </event-object>
+                                            </property>
+                                        </event-subscriber>
+                                    </property>
+                                </gadget>
+                            </property>
+                        </section>
+                    </property>
+                </tab-element>
+                <tab-element name="f297cc49-c5ff-4997-9057-86700cc52054" id="571">
+                    <property name="title">Statistics</property>
+                    <property name="sections">
+                        <section id="572">
+                            <property name="width">100%</property>
+                            <property name="gadgets">
+                                <gadget name="Gadget_e20be4d0-1891-45d5-886f-f4c1775b6611" id="575">
+                                    <property name="height">1000px</property>
+                                    <property name="title">Report - OTCA Statistics</property>
+                                    <property name="externalGadgetURI">^/Report Designs/OTCA Statistics.rptdesign</property>
+                                    <property name="showTitle">true</property>
+                                    <property name="showBorder">true</property>
+                                    <property name="zIndex">2</property>
+                                    <property name="showScrollBar">true</property>
+                                    <property name="height">1000px</property>
+                                    <property name="caption">
+                                        <gadget-caption id="576">
+                                            <property name="showCaption">false</property>
+                                            <property name="horizontalAlignment">left</property>
+                                            <property name="fontFamily">"Lato"</property>
+                                            <property name="fontSize">18pt</property>
+                                            <property name="fontWeight">normal</property>
+                                            <property name="fontStyle">normal</property>
+                                            <property name="color">#353535</property>
+                                            <property name="textUnderline">none</property>
+                                        </gadget-caption>
+                                    </property>
+                                    <property name="content">
+                                        <data-view id="577">
+                                            <list-property name="userProperties">
+                                                <structure>
+                                                    <property name="name">showViewerToolbar</property>
+                                                    <property name="type">boolean</property>
+                                                </structure>
+                                            </list-property>
+                                            <property name="showViewerToolbar">true</property>
+                                            <property name="gadgetType">viewer</property>
+                                            <property name="externalContentRef">
+                                                <external-element-ref>
+                                                    <property name="sourceFile">^/Report Designs/OTCA Statistics.rptdesign</property>
+                                                </external-element-ref>
+                                            </property>
+                                        </data-view>
+                                    </property>
+                                </gadget>
+                                <gadget name="f9030390-f79e-40b1-88cb-b719abdddddf" id="578">
+                                    <property name="height">150px</property>
+                                    <property name="zIndex">1</property>
+                                    <property name="isVisible">false</property>
+                                    <property name="height">150px</property>
+                                    <property name="caption">
+                                        <gadget-caption id="574">
+                                            <property name="showCaption">true</property>
+                                            <property name="horizontalAlignment">left</property>
+                                            <property name="fontFamily">"Lato"</property>
+                                            <property name="fontSize">24pt</property>
+                                            <property name="fontWeight">bold</property>
+                                            <property name="color">#000000</property>
+                                        </gadget-caption>
+                                    </property>
+                                    <property name="content">
+                                        <current-selections id="573"/>
+                                    </property>
+                                </gadget>
+                            </property>
+                        </section>
+                    </property>
+                </tab-element>
+            </property>
+        </dashboard>
+    </property>
+</report>
